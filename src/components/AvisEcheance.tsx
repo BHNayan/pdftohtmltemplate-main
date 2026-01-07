@@ -20,7 +20,7 @@ const AvisEcheance = () => {
                 className="text-[#1a1a1a] font-bold text-[22px] sm:text-[24px] tracking-tight leading-none"
                 style={{ fontFamily: "Arial Black, Arial, sans-serif" }}
               >
-                {" "}
+                
                 habitat
               </span>
             </div>
