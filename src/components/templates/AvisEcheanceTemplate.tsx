@@ -67,7 +67,7 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
               </div>
 
               <div className="border-2 rounded-xl border-[#797979] p-1 flex gap-2 bg-white ">
-                <div className="text-[#797979]  text-4xl flex-shrink-0 leading-none font-normal bg-white mt-[-26px]">ⓘ</div>
+                <div className="text-[#797979]  text-4xl flex-shrink-0 leading-none font-normal bg-white mt-[-32px]">ⓘ</div>
                 <p className="text-[12px] text-gray-800 leading-[1.2em] font-semibold ml-[-30px] mt-2">
                   A partir de janvier 2021, le calcul du montant de votre aide au logement
                   change. Pour toute(s) question(s) relative(s) au nouveau mode de
@@ -212,7 +212,7 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
             <div className="w-[140px] p-1">
 
               {data.qrCodeImage ? (
-              <div className="border-4 border-[#c8102e] h-full p-2 flex flex-col items-center">
+              <div className="border-4 border-[#BB584B] h-full p-2 flex flex-col items-center">
 
                 <p className="font-extrabold text-[13px] mb-1">NOUVEAU !</p>
                 <p className="font-bold text-[12px] leading-tight">Paiement</p>
@@ -224,19 +224,11 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
                     <img
                       src={data.qrCodeImage}
                       alt="QR"
-                      className="w-24 h-24"
+                    
                     />
                   ) : (
                     <QRCodeSVG value={data.qrCodeUrl} size={96} />
                   )}
-                </div>
-
-                {/* PHONE MOCKUP */}
-                <div className="w-16 h-28 border border-gray-600 rounded relative">
-                  <div className="absolute inset-1 border border-gray-300 flex items-center justify-center">
-                    <QRCodeSVG value={data.qrCodeUrl} size={26} />
-                  </div>
-                  <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-1 bg-gray-600 rounded" />
                 </div>
 
               </div>
