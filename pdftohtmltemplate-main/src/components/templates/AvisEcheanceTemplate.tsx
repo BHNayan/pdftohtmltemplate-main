@@ -2,6 +2,8 @@ import { Home, FileText } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import { AvisEcheanceData } from "@/types/template";
 import { forwardRef } from "react";
+import cdclogo from "@/assets/logo-default.png";
+import qrLogo from "@/assets/qr.png";
 
 interface AvisEcheanceTemplateProps {
   data: AvisEcheanceData;
@@ -12,75 +14,61 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
     return (
       <div ref={ref} className="bg-white text-gray-900 w-full max-w-[210mm] mx-auto shadow-lg font-sans text-[11px] leading-tight print:shadow-none print:max-w-none">
         {/* Header */}
-        <div className="flex  items-center px-4 sm:px-5 pt-3 pb-2 bg-white gap-10">
+        <div className="flex  items-center px-2  pt-3 pb-2 bg-white gap-2">
           {/* Left - Logo */}
           <div className="flex items-center">
             {data.logoUrl ? (
               <img src={data.logoUrl} alt="Logo" className="w-full h-[42px] object-contain" />
             ) : (
               <>
-                <div className="flex flex-col">
-                  <div className="flex items-baseline">
-                    <span className="text-[#c8102e] font-bold text-[22px] sm:text-[24px] tracking-tight leading-none" style={{ fontFamily: "poppins" }}>cdc</span>
-                    <span className="text-[#1a1a1a] font-bold text-[22px] sm:text-[24px] tracking-tight leading-none" style={{ fontFamily: "poppins" }}> habitat</span>
-                  </div>
-                  <span className="text-[#c8102e] text-[10px] sm:text-[11px] font-medium tracking-wide leading-none mt-0.5">social</span>
-                </div>
-                <div className="h-9 w-px bg-gray-400 mx-2"></div>
-                <div className="flex flex-col items-center justify-center">
-                  <div className="w-[38px] h-[38px] sm:w-[42px] sm:h-[42px] bg-[#c8102e] flex items-center justify-center">
-                    <div className="text-white text-center leading-[1.1]">
-                      <p className="text-[5px] sm:text-[6px] font-normal">Caisse</p>
-                      <p className="text-[5px] sm:text-[6px] font-normal">des Dépôts</p>
-                      <p className="text-[4.5px] sm:text-[5px] font-normal tracking-tight uppercase border-t border-white/50 pt-0.5 mt-0.5">groupe</p>
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src={cdclogo}
+                  alt="CDC"
+                  style={{ width: "300px", height: "100%" }}
+                />
               </>
             )}
           </div>
 
           {/* Right - Agency Address */}
-          <div className="text-[12px] sm:text-[12px] text-gray-700 text-right leading-[1.4]">
-            <p className="font-bold text-gray-900">{data.agencyName}</p>
-            <p>{data.agencyAddress1}</p>
-            <p>{data.agencyAddress2}</p>
+          <div className="text-[12px] sm:text-[12px] text-gray-700 text-left leading-[1.4]">
+            <p className="font-medium text-gray-700">{data.agencyName}</p>
+            <p className="font-medium text-gray-700">{data.agencyAddress1}</p>
+            <p className="font-medium text-gray-700">{data.agencyAddress2}</p>
           </div>
         </div>
 
-        {/* Red line under header */}
-        <div className="h-[2px] bg-[#c8102e] mx-4 sm:mx-5 mb-3"></div>
 
         {/* Main Content */}
-        <div className="px-4 sm:px-6 pb-4">
+        <div className="px-4 sm:px-6 pb-4 pt-8">
           {/* Top Row - Left info and Right Title/Address */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
             {/* Left Column - Company info */}
             <div className="flex-1 order-2 sm:order-1">
-              <p className="text-[14px] text-gray-600 mb-3">SIREN bailleur : {data.sirenBailleur}</p>
+              <p className="text-[14px] text-gray-700 mb-3 font-medium">SIREN bailleur : {data.sirenBailleur}</p>
 
-              <p className="text-[12px] mb-0.5">
-                <span className="text-gray-700">Votre service client : </span>
-                <span className="text-gray-600 font-bold text-[14px]">{data.serviceClient}</span>
+              <p className=" mb-0.5">
+                <span className="text-gray-700 font-medium text-[14px] ">Votre service client : </span>
+                <span className="text-gray-700 font-bold text-[14px] ">{data.serviceClient}</span>
               </p>
-              <p className="text-[12px] text-gray-600 mb-0.5">{data.serviceHours}</p>
-              <p className="text-[14px] text-gray-600 mb-5">
-                Votre espace web : <span className="text-gray-600  font-semibold">{data.webspace}</span>
+              <p className="text-[14px] text-black mb-0.5 font-medium ">{data.serviceHours}</p>
+              <p className="text-[14px] text-gray-600 mb-5 font-medium">
+                Votre espace web : <span className="text-gray-900  font-bold">{data.webspace}</span>
               </p>
 
               <div className="mb-4">
-                <p className="text-[14px] font-bold text-gray-900 mb-1">Référence client : {data.referenceClient}</p>
+                <p className="text-[16px] font-bold text-gray-900 mb-1">Référence client : {data.referenceClient}</p>
                 <div className="flex flex-wrap">
-                  <span className="text-[12px] text-gray-600">Adresse du bien principal :</span>
-                  <span className="text-[12px] text-gray-900 font-medium ml-1">{data.propertyName}</span>
+                  <span className="text-[14px] text-gray-700 font-medium">Adresse du bien principal :</span>
+                  <span className="text-[14px] text-gray-900 font-semibold ml-1">{data.propertyName}</span>
                 </div>
-                <p className="text-[12px] text-gray-900 ml-0 sm:ml-[150px]">{data.propertyAddress1}</p>
-                <p className="text-[12px] text-gray-900 ml-0 sm:ml-[150px]">{data.propertyAddress2}</p>
+                <p className="text-[14px] text-gray-900 ml-0 sm:ml-[150px] font-semibold">{data.propertyAddress1}</p>
+                <p className="text-[14px] text-gray-900 ml-0 sm:ml-[150px] font-semibold">{data.propertyAddress2}</p>
               </div>
 
               <div className="border-2 rounded-xl border-[#797979] p-1 flex gap-2 bg-white ">
-                <div className="text-[#797979]  text-4xl flex-shrink-0 leading-none font-normal bg-white mt-[-30px]">ⓘ</div>
-                <p className="text-[12px] text-gray-700 leading-relaxed font-semibold">
+                <div className="text-[#797979]  text-4xl flex-shrink-0 leading-none font-normal bg-white mt-[-26px]">ⓘ</div>
+                <p className="text-[12px] text-gray-800 leading-[1.2em] font-semibold ml-[-30px] mt-2">
                   A partir de janvier 2021, le calcul du montant de votre aide au logement
                   change. Pour toute(s) question(s) relative(s) au nouveau mode de
                   calcul, merci de bien vouloir vous rapprocher de votre CAF ou de vous
@@ -90,24 +78,24 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
             </div>
 
             {/* Right Column - Title and Address */}
-            <div className="w-full sm:w-[260px] order-1 sm:order-2">
+            <div className="w-full sm:w-[300px] order-1 sm:order-2">
               <div className="mb-4">
-                <h1 className="text-[#c8102e] text-[24px] sm:text-[26px] font-black tracking-tight leading-[0.95]" style={{ fontFamily: "poppins" }}>
+                <h1 className="text-[#c8102e] text-center text-[24px] sm:text-[32px] font-black tracking-tight leading-[0.95]" style={{ fontFamily: "poppins" }}>
                   AVIS D'ÉCHÉANCE
                 </h1>
-                <p className="text-[#c8102e] text-[12px] font-bold mt-1">N° {data.invoiceNumber} du {data.invoiceDate}</p>
-                <p className="text-[12px] text-gray-500 mt-2 leading-relaxed">
+                <p className="text-gray-600 text-center text-[14px] font-semibold mt-1">N° {data.invoiceNumber} du {data.invoiceDate}</p>
+                <p className="text-[14px] text-gray-400 mt-2 leading-[1.3em] font-normal">
                   Cet avis d'échéance vaut quittance du mois précédent si vous êtes titulaire du
                   bail et n'avez pas de dette antérieure à la facturation du mois.
                 </p>
               </div>
 
               <div className="mt-6" style={{ fontFamily: "Poppins" }}>
-                <p className="font-bold text-[13px]">{data.tenantName}</p>
-                <p className="text-[14px]">{data.tenantResidence}</p>
-                <p className="text-[14px]">{data.tenantDoor}</p>
-                <p className="text-[14px]">{data.tenantAddress}</p>
-                <p className="text-[14px]">{data.tenantCity}</p>
+                <p className="font-bold text-[14px]">{data.tenantName}</p>
+                <p className=" font-medium text-[14px]">{data.tenantResidence}</p>
+                <p className=" font-medium text-[14px]">{data.tenantDoor}</p>
+                <p className="font-medium text-[14px]">{data.tenantAddress}</p>
+                <p className="font-medium text-[14px]">{data.tenantCity}</p>
               </div>
             </div>
           </div>
@@ -131,25 +119,25 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
                 <tbody>
                   <tr>
                     <td colSpan={2} className="px-3 py-2">
-                      <p className="text-[12px] font-bold mb-0.5 text-gray-900">
-                        Logement N° {data.logementNumber} Du {data.periodStart} au {data.periodEnd}
+                      <p className="text-[14px] font-bold mb-0.5 text-gray-900">
+                        Logement N° <span className="text-[12px] font-medium mb-0.5 text-gray-900">{data.logementNumber} Du {data.periodStart} au {data.periodEnd}</span>
                       </p>
-                      <p className="text-[12px] text-[#c8102e] mb-2">
+                      <p className="text-[12px] text-black mb-2 mt-1">
                         Montant maximum du loyer conventionné : {data.conventionAmount} €
                       </p>
                     </td>
                   </tr>
                   <tr>
-                    <td className=" px-3 py-0.5 text-[12px] text-gray-700 pl-8">Loyer principal</td>
-                    <td className=" px-2 py-0.5 text-[12px] text-gray-900 text-right">{data.loyerPrincipal}</td>
+                    <td className=" px-3 py-0.5 text-[14px] text-gray-800 pl-8 font-medium">Loyer principal</td>
+                    <td className=" px-2 py-0.5 text-[14px] text-gray-800 text-right">{data.loyerPrincipal}</td>
                   </tr>
                   <tr>
-                    <td className=" px-3 py-0.5 text-[12px] text-gray-700 pl-8">Charges chauffage</td>
-                    <td className=" px-2 py-0.5 text-[12px] text-gray-900 text-right">{data.chargesChauffage}</td>
+                    <td className=" px-3 py-0.5 text-[14px] text-gray-800 pl-8 font-medium">Charges chauffage</td>
+                    <td className=" px-2 py-0.5 text-[14px] text-gray-800 text-right">{data.chargesChauffage}</td>
                   </tr>
                   <tr>
-                    <td className=" px-3 py-0.5 text-[12px] text-gray-700 pl-8">Charges générales</td>
-                    <td className=" px-2 py-0.5 text-[12px] text-gray-900 text-right">{data.chargesGenerales}</td>
+                    <td className=" px-3 py-0.5 text-[14px] text-gray-800 pl-8 font-medium">Charges générales</td>
+                    <td className=" px-2 py-0.5 text-[14px] text-gray-800 text-right">{data.chargesGenerales}</td>
                   </tr>
                   <tr className="">
                     <td className=" px-3 py-2 text-[16px] font-bold text-gray-900 text-right">TOTAL ÉCHÉANCE</td>
@@ -175,20 +163,20 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
                 </thead>
                 <tbody>
                   <tr>
-                    <td className=" px-3 py-1 text-[12px] font-bold text-gray-900">SOLDE au {data.soldeDate1}</td>
+                    <td className=" px-3 py-1 text-[14px] font-bold text-gray-900 text-center">SOLDE au {data.soldeDate1}</td>
                     <td className=" px-2 py-1 text-[12px] text-gray-900 text-right">{data.soldeAmount1}</td>
                   </tr>
                   <tr>
-                    <td className=" px-3 py-1 text-[12px] font-bold text-gray-900">SOLDE au {data.soldeDate2}</td>
+                    <td className=" px-3 py-1 text-[14px] font-bold text-gray-900 text-center">SOLDE au {data.soldeDate2}</td>
                     <td className="px-2 py-1 text-[12px] text-gray-900 text-right">{data.soldeAmount2}</td>
                   </tr>
                   <tr>
-                    <td className=" px-3 py-1 text-[12px] text-gray-700 pl-6">Échéance</td>
-                    <td className=" px-2 py-1 text-[12px] text-gray-900 text-right">{data.echeanceAmount}</td>
+                    <td className=" px-3 py-1 text-[14px] text-gray-800 pl-[70px]  font-medium">Échéance</td>
+                    <td className=" px-2 py-1 text-[14px] text-gray-800 text-right">{data.echeanceAmount}</td>
                   </tr>
                   <tr>
-                    <td className="px-3 py-1 text-[12px] font-bold text-gray-900">SOLDE APRÈS ÉCHÉANCE</td>
-                    <td className=" px-2 py-1 text-[12px] font-bold text-gray-900 text-right">{data.soldeApresEcheance}</td>
+                    <td className="px-3 py-1 text-[14px] font-bold text-gray-900 text-center pl-[32px]">SOLDE APRÈS ÉCHÉANCE</td>
+                    <td className=" px-2 py-1 text-[14px] font-bold text-gray-900 text-right">{data.soldeApresEcheance}</td>
                   </tr>
                 </tbody>
               </table>
@@ -207,7 +195,7 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
           </div>
 
           {/* Footer Company Info */}
-          <div className="mt-8 pt-2 border-t border-gray-300 text-[10px] text-black leading-relaxed text-left font-semibold">
+          <div className="mt-10 pt-2 border-t border-gray-300 text-[10px] text-black leading-relaxed text-left font-semibold mb-8">
             <p>
               {data.footerCompanyName} – {data.footerAddress} – {data.footerLegalForm} au capital de {data.footerCapital}
             </p>
@@ -216,149 +204,148 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
             </p>
           </div>
 
-          {/* Payment Slip Section - TIP */}
-          <div className="mt-6 border-t-2 border-dashed border-gray-500 pt-1">
-            {/* Scissors indicator */}
-            <div className="text-center -mt-3 mb-2">
-              <span className="text-gray-500 text-[12px] bg-white px-2">✂</span>
-            </div>
 
-            <div className="">
-              <div className="flex flex-col sm:flex-row">
-                {/* Left - QR Code section with red left border */}
-                <div className="border-4 border-[#c8102e] px-3 py-3 flex-shrink-0 bg-white text-center  ">
-                  <div className=" text-black px-2 py-0.5 text-[14px] font-bold inline-block mb-2">
-                    NOUVEAU !
-                  </div>
-                  <div className="mb-2">
-                    <p className="text-[14px] font-bold text-black leading-tight">Paiement</p>
-                    <p className="text-[14px] font-bold text-blak leading-tight">en ligne</p>
-                  </div>
-                  {/* QR code with phone illustration */}
-                  <div className="flex flex-col items-center w-full h-full gap-2">
+          {/* ================= TIP SEPA PAYMENT SLIP ================= */}
+          <div className="w-full flex font-[Arial] text-black text-[12px]">
 
-                    {/* MAIN QR CODE */}
-                    <div className="w-full flex justify-center">
-                      {data.qrCodeImage ? (
-                        <img
-                          src={data.qrCodeImage}
-                          alt="QR Code"
-                          className="w-32 h-32 object-contain"
-                        />
-                      ) : (
-                        <QRCodeSVG
-                          value={data.qrCodeUrl}
-                          size={120}
-                          level="M"
-                        />
-                      )}
-                    </div>
+            {/* ================= LEFT QR BOX ================= */}
+            <div className="w-[140px] p-1">
 
-                    {/* MOBILE QR PREVIEW */}
-                    <div className="w-20 h-32 border-2 border-gray-600 rounded-md bg-white relative">
+              {data.qrCodeImage ? (
+              <div className="border-4 border-[#c8102e] h-full p-2 flex flex-col items-center">
 
-                      <div className="absolute top-1 left-1 right-1 bottom-3 border border-gray-300 flex items-center justify-center overflow-hidden">
-                        {data.qrCodeImage ? (
-                          <img
-                            src={data.qrCodeImage}
-                            alt="QR Code"
-                            className="w-8 h-8 object-contain"
-                          />
-                        ) : (
-                          <QRCodeSVG
-                            value={data.qrCodeUrl}
-                            size={28}
-                            level="L"
-                          />
-                        )}
-                      </div>
+                <p className="font-extrabold text-[13px] mb-1">NOUVEAU !</p>
+                <p className="font-bold text-[12px] leading-tight">Paiement</p>
+                <p className="font-bold text-[12px] leading-tight mb-2">en ligne</p>
 
-                      {/* phone speaker */}
-                      <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3 h-1 bg-gray-500 rounded-full"></div>
-                    </div>
-
-                  </div>
-
+                {/* MAIN QR */}
+                <div className="mb-2">
+                  {data.qrCodeImage ? (
+                    <img
+                      src={data.qrCodeImage}
+                      alt="QR"
+                      className="w-24 h-24"
+                    />
+                  ) : (
+                    <QRCodeSVG value={data.qrCodeUrl} size={96} />
+                  )}
                 </div>
 
-                {/* Middle - SEPA info */}
-                <div className="flex-1 px-3 py-2 text-[14px] text-gray-900 border-r border-dashed border-gray-400 font-semibold">
-                  <p className="mb-0.5"><span className="font-bold">IBAN :</span> <span className="text-gray-600">{data.iban}</span></p>
-                  <p className="mb-0.5"><span className="font-bold">ICS :</span> <span className="text-gray-600">{data.ics}</span></p>
-                  <p><span className="font-bold">RUM :</span> <span className="text-gray-600">{data.rum}</span></p>
+                {/* PHONE MOCKUP */}
+                <div className="w-16 h-28 border border-gray-600 rounded relative">
+                  <div className="absolute inset-1 border border-gray-300 flex items-center justify-center">
+                    <QRCodeSVG value={data.qrCodeUrl} size={26} />
+                  </div>
+                  <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-1 bg-gray-600 rounded" />
+                </div>
 
-                  <div className="flex mt-4 mb-1">
-                    <div className="w-1/2">
-                      <span className="text-gray-600 text-[12px]">Date et lieu</span>
-                    </div>
-                    <div className="w-1/2">
-                      <span className="text-gray-600 text-[12px]">Signature</span>
-                    </div>
+              </div>
+            ) : (
+              <>
+                <img
+                  src={qrLogo}
+                  alt="QR"
+                  style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                />
+              </>
+            )}
+              
+            </div>
+
+            {/* ================= RIGHT MAIN BOX ================= */}
+            <div className="flex-1 border-l border-t border-gray-700 border-dashed">
+
+              {/* ---------- TOP SECTION ---------- */}
+              <div className="flex border-b border-black">
+
+                {/* IBAN + MANDATE (LEFT) */}
+                <div className="w-[280px] p-1 ">
+                  <p><b>IBAN :</b> Prière de joindre un RIB</p>
+                  <p><b>ICS :</b> {data.ics}</p>
+                  <p className="mb-2"><b>RUM :</b> {data.rum}</p>
+
+                  <div className="flex text-[12px] mb-2 border border-gray-300 p-8">
+                    <div className="w-full text-gray-500">Date et lieu</div>
+                    <div className="w-full text-gray-500">Signature</div>
                   </div>
 
-                  <div className="flex gap-4 mb-3">
-                    <div className="w-1/2 border-b border-dashed border-gray-400 h-6"></div>
-                    <div className="w-1/2 border-b border-dashed border-gray-400 h-6"></div>
-                  </div>
-
-                  <p className="text-[12px] text-black leading-[1.3em] font-semibold">
+                  <p className="text-[10px] leading-tight">
                     Mandat de prélèvement SEPA ponctuel : en signant ce formulaire de mandat,
-                    vous autorisez votre bailleur à envoyer des instructions à votre banque pour
-                    débiter votre compte, et votre banque à débiter votre compte conformément
-                    aux instructions de votre bailleur. Vous bénéficiez du droit d'être remboursé
-                    par votre banque selon les conditions décrites dans la convention que vous
-                    avez passée avec elle. Toute demande de remboursement peut être
-                    présentée dans les 8 semaines suivant la date de débit de votre compte pour
-                    un prélèvement autorisé. Vos droits concernant le présent mandat sont
-                    expliqués dans un document que vous pouvez obtenir auprès de votre
-                    banque. Le présent document à valeur de mandat de prélèvement SEPA
-                    ponctuel. <span className="font-bold text-gray-700">Votre signature vaut autorisation pour débiter, à réception, votre
-                      compte pour le montant indiqué.</span>
+                    vous autorisez votre bailleur à envoyer des instructions à votre banque
+                    pour débiter votre compte conformément aux instructions.
+                    Vous bénéficiez du droit d'être remboursé par votre banque selon les
+                    conditions décrites dans la convention que vous avez passée avec elle.
+                    Toute demande de remboursement peut être présentée dans les 8 semaines
+                    suivant la date de débit de votre compte.
+                    <b>
+                      Votre signature vaut autorisation pour débiter, à réception,
+                      votre compte pour le montant indiqué.
+                    </b>
                   </p>
                 </div>
 
-                {/* Right - TIP Section */}
-                <div className="w-full sm:w-[180px] px-3 py-2">
-                  <div className="text-[12px] leading-snug" style={{ fontFamily: "poppins" }}>
-                    <p className="font-bold text-black ">{data.tenantName}</p>
-                    <p className="text-black font-semibold">{data.tenantResidence}</p>
-                    <p className="text-black font-semibold">{data.tenantDoor}</p>
-                    <p className="text-black font-semibold">{data.tenantAddress}</p>
-                    <p className="text-black font-semibold">{data.tenantCity}</p>
+                {/* RIGHT INFO COLUMN */}
+                <div className="w-[300px] p-1">
+
+                  {/* ADDRESS + AMOUNT (SIDE BY SIDE) */}
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <p className="font-bold mb-1 mr-2 text-[12px]">{data.tenantName}</p>
+                      <p className="text-[12px]">{data.tenantResidence}</p>
+                      <p className="text-[12px]">{data.tenantDoor}</p>
+                      <p className="text-[12px]">{data.tenantAddress}</p>
+                      <p className="text-[12px]">{data.tenantCity}</p>
+                    </div>
+
+                    <div className=" w-[190px] ">
+                      <p className="font-bold text-[14px] text-center bg-[#d9d9d9] p-2">
+                        Montant : {data.paymentAmount} €
+                      </p>
+                      <p className="text-[#c8102e] font-bold text-[20px] text-center">
+                        TIPS€PA
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="text-right my-3 bg-[#D9D9D9] p-2">
-                    <p className="text-[14px] font-bold text-gray-900">Montant : {data.paymentAmount} €</p>
-                    <p className="text-[#c8102e] font-black text-[16px] tracking-[0.02em]" style={{ fontFamily: "poppins" }}>TIPS€PA</p>
+                  {/* EMPTY GAP (IMAGE MATCH) */}
+                  <div className="h-8"></div>
+
+                  {/* AGENCY INFO */}
+                  <div className="mb-2 ml-16 justify-center">
+                    <p className="font-bold">{data.footerCompanyName}</p>
+                    <p>{data.agencyName}</p>
+                    <p>CA : {data.referenceClient}</p>
                   </div>
 
-                  <div className="text-[12px] leading-snug">
-                    <p className="font-bold text-gray-900">{data.footerCompanyName}</p>
-                    <p className="text-gray-700">{data.agencyName}</p>
-                    <p className="text-gray-700">CA : {data.referenceClient}</p>
+                  <div className="mb-1 ml-16 justify-center">
+                    <p className="font-bold">{data.footerCompanyName}</p>
+                    <p>CS {data.RefferCS}</p>
+                    <p>{data.RefferAddress}</p>
                   </div>
 
-                  <div className="text-[12px] mt-2 leading-snug">
-                    <p className="font-bold text-gray-900">{data.footerCompanyName}</p>
-                    <p className="text-gray-700">CS:{data.RefferCS}</p>
-                    <p className="text-gray-700">{data.RefferAddress}</p>
-                  </div>
+                  <p className="text-[9px] mt-2 text-gray-500   pt-1 font-bold">
+                    NE RIEN INSCRIRE SOUS CE TRAIT - NE PAS PLIER
+                  </p>
+                </div>
 
-                  <p className="text-[10px] text-gray-500 mt-3 border-t border-gray-400 pt-1 uppercase tracking-tight font-semibold">NE RIEN INSCRIRE SOUS CE TRAIT - NE PAS PLIER</p>
+              </div>
+
+              {/* ---------- BOTTOM BARCODE ---------- */}
+              <div className="border-t border-black p-2 text-left ">
+                <p className="tracking-[0.35em] font-bold mb-1 ml-8">
+                  {data.barcodeText1}
+                </p>
+
+                <div className="flex justify-center gap-8 tracking-widest font-bold">
+                  <span>{data.barcodeText2}</span>
+                  <span>{data.barcodeText3}</span>
+                  <span>{data.barcodeText4}</span>
                 </div>
               </div>
 
-              {/* Bottom Barcode Section */}
-              <div className="border-t border-dashed border-gray-400 py-2 px-3 text-center" style={{ fontFamily: "Poppins" }}>
-                <p className="text-[14px] tracking-[0.15em] text-gray-900 font-bold">{data.barcodeText1}</p>
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-8 mt-2 text-[12px] tracking-[0.12em]">
-                  <span className="text-gray-900 font-bold">{data.barcodeText2}</span>
-                  <span className="text-gray-900 font-bold">{data.barcodeText3}</span>
-                  <span className="font-bold text-gray-900 text-[14px]">{data.barcodeText4}</span>
-                </div>
-              </div>
             </div>
           </div>
+
         </div>
       </div>
     );
