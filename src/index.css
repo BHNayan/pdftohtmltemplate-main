@@ -1,9 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url(https://db.onlinewebfonts.com/c/d435e1a82d70d4271e9e521ed36ec215?family=Geometria+W04+Light);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
+@font-face {
+    font-family: "Geometria W04 Light";
+    src: url("https://db.onlinewebfonts.com/t/d435e1a82d70d4271e9e521ed36ec215.eot");
+    src: url("https://db.onlinewebfonts.com/t/d435e1a82d70d4271e9e521ed36ec215.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/d435e1a82d70d4271e9e521ed36ec215.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/d435e1a82d70d4271e9e521ed36ec215.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/d435e1a82d70d4271e9e521ed36ec215.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/d435e1a82d70d4271e9e521ed36ec215.svg#Geometria W04 Light")format("svg");
+}
 
 @layer base {
   :root {
@@ -82,7 +91,7 @@
 
   body {
     @apply bg-background text-foreground font-sans;
-    font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Geometria W04 Light";
   }
 }
 
