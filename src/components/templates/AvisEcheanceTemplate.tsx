@@ -62,8 +62,8 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
                   <span className="text-[11px] text-gray-700 font-medium">Adresse du bien principal :</span>
                   <span className="text-[11px] text-gray-900 font-semibold ml-1" style={{ fontFamily: 'Geometria W04 Light' }}>{data.propertyName}</span>
                 </div>
-                <p className="text-[11px] text-gray-900 ml-0 sm:ml-[142px] font-semibold" style={{ fontFamily: 'Geometria W04 Light' }}>{data.propertyAddress1}</p>
-                <p className="text-[11px] text-gray-900 ml-0 sm:ml-[142px] font-semibold" style={{ fontFamily: 'Geometria W04 Light' }}>{data.propertyAddress2}</p>
+                <p className="text-[11px] text-gray-900 ml-0 sm:ml-[136px] font-semibold" style={{ fontFamily: 'Geometria W04 Light' }}>{data.propertyAddress1}</p>
+                <p className="text-[11px] text-gray-900 ml-0 sm:ml-[136px] font-semibold" style={{ fontFamily: 'Geometria W04 Light' }}>{data.propertyAddress2}</p>
               </div>
 
               <div className="border-2 rounded-xl border-[#797979] p-1 flex gap-2 bg-white w-[335px] ">
