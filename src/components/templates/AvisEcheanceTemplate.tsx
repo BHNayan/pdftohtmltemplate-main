@@ -14,7 +14,7 @@ const AvisEcheanceTemplate = forwardRef<HTMLDivElement, AvisEcheanceTemplateProp
     return (
       <div ref={ref} className="bg-white text-gray-900 w-full max-w-[210mm] mx-auto shadow-lg font-sans text-[11px] leading-tight print:shadow-none print:max-w-none">
         {/* Header */}
-        <div className="flex  items-center px-2  pt-3 pb-2 bg-white gap-2">
+        <div className="flex  items-center px-2  pt-3 pb-2 bg-white gap-2 ml-3">
           {/* Left - Logo */}
           <div className="flex items-center">
             {data.logoUrl ? (
