@@ -3,7 +3,7 @@ import { QRCodeSVG } from "qrcode.react";
 import { AvisEcheanceData } from "@/types/template";
 import { forwardRef } from "react";
 import cdclogo from "@/assets/logo-default.png";
-import qrLogo from "@/assets/qr.png";
+
 
 interface AvisEcheanceTemplateProps {
   data: AvisEcheanceData;
