@@ -1,6 +1,8 @@
 import { forwardRef } from "react";
 import { FonciaAvisEcheanceData } from "@/types/template";
 import { QRCodeSVG } from "qrcode.react";
+import { fontFamily } from "html2canvas/dist/types/css/property-descriptors/font-family";
+import fonicalogo from '../../assets/fonica-logo.png';
 
 interface FonciaAvisEcheanceTemplateProps {
   data: FonciaAvisEcheanceData;
@@ -13,429 +15,433 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
         ref={ref}
         className="bg-white shadow-lg mx-auto relative"
         style={{
-          width: "210mm",
-          minHeight: "297mm",
+
           padding: "0",
-          fontFamily: "Arial, sans-serif",
-          fontSize: "9px",
-          lineHeight: "1.3",
+          fontFamily: "Poppins, sans-serif",
+          fontSize: "10px",
           color: "#000",
         }}
       >
-        {/* Orange Header Bar */}
-        <div 
-          style={{ 
-            backgroundColor: "#f7941d",
-            height: "8mm",
-            width: "100%",
-          }} 
-        />
 
-        {/* Blue vertical text on the right edge */}
-        <div
-          style={{
-            position: "absolute",
-            right: "2mm",
-            top: "20mm",
-            writingMode: "vertical-rl",
-            transform: "rotate(180deg)",
-            color: "#00529b",
-            fontSize: "10px",
-            fontWeight: "bold",
-          }}
-        >
-          www.foncia.com
-        </div>
 
-        <div style={{ padding: "4mm 10mm 6mm 8mm" }}>
-          {/* Header Section */}
-          <div className="flex justify-between items-start mb-4">
-            {/* Left - Foncia Logo */}
-            <div className="flex-shrink-0">
-              {data.logoUrl ? (
-                <img src={data.logoUrl} alt="Logo" className="h-16 object-contain" />
-              ) : (
-                <div className="flex flex-col">
-                  {/* Multi-colored house icon representation */}
-                  <div className="flex items-end gap-0.5 mb-1">
-                    <div style={{ width: "12px", height: "20px", backgroundColor: "#00a651" }} />
-                    <div style={{ width: "12px", height: "28px", backgroundColor: "#f7941d" }} />
-                    <div style={{ width: "12px", height: "24px", backgroundColor: "#00529b" }} />
-                    <div style={{ width: "12px", height: "16px", backgroundColor: "#8dc63f" }} />
-                    <div style={{ width: "12px", height: "20px", backgroundColor: "#fbb040" }} />
-                    <div style={{ width: "12px", height: "14px", backgroundColor: "#29abe2" }} />
-                  </div>
-                  <div 
-                    style={{
-                      fontFamily: "Arial, sans-serif",
-                      fontSize: "28px",
-                      fontWeight: "bold",
-                      color: "#00529b",
-                      letterSpacing: "-1px",
-                    }}
-                  >
-                    FONCIA
-                  </div>
-                  <div 
-                    style={{
-                      fontFamily: "Arial, sans-serif",
-                      fontSize: "14px",
-                      fontWeight: "bold",
-                      color: "#00529b",
-                      letterSpacing: "3px",
-                    }}
-                  >
-                    AZUR
-                  </div>
+        <div className="p-4">
+          <div className="border-b-4 border-[#EA6506]">
+            {/* Header Section */}
+            <div className="flex justify-between gap-0 mb-0 pb-0 items-end">
+              {/* Left - Foncia Logo */}
+
+              <div className="flex items-center p-2">
+                {data.logoUrl ? (
+                  <img src={data.logoUrl} alt="Logo" className="w-full h-[45px] object-contain" />
+                ) : (
+                  <>
+                    <img
+                      src={fonicalogo}
+                      alt="Foncia"
+                      className="w-full h-full"
+                    />
+                  </>
+                )}
+              </div>
+              {/* Document Date and Ref Line with orange underline */}
+              <div className="p-2 text-[11px] flex justify-between pb-2">
+                <span>{data.documentDate}</span>
+                <span className="mx-2">/</span>
+                <span>{data.documentRef}</span>
+              </div>
+
+              {/* Right - Agency Info */}
+              <div className="text-right mr-[40px] pb-2 ">
+                <div className="font-bold text-[40px] text-right font-['Playfair_Display',serif] leading-[1.3em]" >{data.agencyNamemain}</div>
+                <div className="font-bold text-[22px] text-right font-['Playfair_Display',serif]" >{data.agencyNamesub}</div>
+                <div className="text-gray-500 text-[11px] font-['Inter',sans-serif] font-light">{data.agencyAddress1}</div>
+                <div className="font-['Inter',sans-serif] font-light text-gray-500  text-[11px]">{data.agencyAddress2}</div>
+                <div className="font-bold text-black text-[11px]">Tél : {data.agencyPhone}</div>
+                <div className="font-thin text-gray-500 text-[10px]">Fax : {data.agencyFax}</div>
+                <div className="font-thin text-gray-500 text-[10px]">{data.agencyEmail}</div>
+              </div>
+              {/* Blue vertical text on the right edge */}
+              <div className="p-2 bg-[#EA6506] w-[30px] h-[160px] absolute right-4 top-5 ">
+                <div
+                  className="-rotate-90 text-white text-[16px] font-bold font-['Poppins',sans-serif] whitespace-nowrap mt-[125px] mr-4" >
+                  www.foncia.com
                 </div>
-              )}
+              </div>
             </div>
-
-            {/* Right - Agency Info */}
-            <div className="text-right text-[9px]">
-              <div className="font-bold" style={{ color: "#00529b" }}>{data.agencyAddress1}</div>
-              <div>{data.agencyAddress2}</div>
-              <div style={{ color: "#f7941d", fontWeight: "bold" }}>Tél : {data.agencyPhone}</div>
-              <div>Fax : {data.agencyFax}</div>
-              <div style={{ color: "#00529b" }}>{data.agencyEmail}</div>
-            </div>
-          </div>
-
-          {/* Document Date and Ref Line with orange underline */}
-          <div 
-            className="text-[10px] mb-4"
-            style={{ 
-              borderBottom: "2px solid #f7941d",
-              paddingBottom: "2mm",
-            }}
-          >
-            <span>{data.documentDate}</span>
-            <span className="mx-4">/</span>
-            <span>{data.documentRef}</span>
           </div>
 
           {/* Property Address and Tenant Block */}
-          <div className="flex justify-between mb-4">
+          <div className="flex justify-between mb-4 mt-8">
             {/* Left - Property Address */}
             <div className="text-[9px]">
-              <div 
-                className="font-bold mb-1 pb-1" 
-                style={{ 
-                  borderBottom: "1px solid #f7941d",
-                  color: "#000",
-                }}
+              <div
+                className="font-bold underline pb-[3px]"
+
               >
                 Adresse de l'immeuble donné à bail
               </div>
-              <div className="font-bold">{data.propertyName}</div>
+              <div>{data.propertyName}</div>
               <div>{data.propertyAddress1}</div>
               <div>{data.propertyAddress2}</div>
             </div>
 
-            {/* Right - Tenant Address */}
-            <div className="text-[9px]" style={{ width: "45%" }}>
-              <div className="font-bold">{data.tenantName}</div>
-              <div>{data.tenantAddress1}</div>
-              <div>{data.tenantAddress2}</div>
-              <div className="mt-2 font-bold">{data.propertyAddress1}</div>
-              <div>{data.propertyAddress2}</div>
+            <div className="flex flex-col justify-start gap-2  text-black  mr-[100px] mt-6">
+              {/* Tenant Address Block */}
+              <div className="flex flex-col justify-start mb-6 font-bold text-[12px]" style={{ fontFamily: "Geometria W04 Light" }}>
+                <div>{data.tenantName}</div>
+                <div>{data.tenantName2}</div>
+                <div>{data.tenantName3}</div>
+                <div>{data.tenantAddress1}</div>
+                <div>{data.tenantAddress2}</div>
+              </div>
             </div>
           </div>
 
           {/* Staff Info Section */}
-          <div 
-            className="p-2 mb-3 text-[8px]"
-            style={{ 
-              border: "1px solid #ccc",
-            }}
-          >
-            <div className="font-bold mb-1" style={{ color: "#00529b" }}>Les interlocuteurs à votre service</div>
-            <div className="flex justify-between">
-              <div>
-                <span className="font-bold">Gestionnaire :</span> {data.gestionnaireName} <span className="ml-4">{data.gestionnairePhone}</span>
+
+          <div className=" flex justify-between gap-2">
+
+            <div className=" flex flex-col justify-between border border-black p-0 w-[376px] mb-4 pb-2">
+              <div className="font-bold mb-1 text-center bg-[#DDDDDD] text-black pb-2 align-top"><span className="mt-[-10px]">Les interlocuteurs à votre service</span></div>
+              <div className=" text-[11px] flex justify-between">
+                <span className="font-medium ml-3 ">Gestionnaire :</span> <span className="ml-[-115px] text-left font-medium"> {data.gestionnaireName}</span> <span className="mr-[2px] text-right font-medium">{data.gestionnairePhone}</span>
               </div>
-              <div>
-                <span className="font-bold">Référence :</span> {data.reference}
-              </div>
-              <div>Page N° 1/1</div>
-            </div>
-            <div className="flex justify-between">
-              <div>
-                <span className="font-bold">Comptable :</span> {data.comptableName} <span className="ml-4">{data.comptablePhone}</span>
-              </div>
-              <div>
-                <span className="font-bold">TVA Intra. :</span> {data.tvaIntra}
+              <div className=" text-[11px] flex justify-between">
+                <span className="font-medium ml-3 ">Comptable :</span> <span className="ml-[-100px] text-left font-medium">{data.comptableName}</span> <span className="mr-[2px] text-right font-medium">{data.comptablePhone}</span>
               </div>
             </div>
+
+
+            <div className="flex flex-col justify-start items-start text-left mr-24 gap-1">
+
+              <div>
+                <span className="font-medium text-[11px]">Référence :</span> {data.reference}
+              </div>
+              <div>
+                <span className="font-medium text-[11px]">TVA Intra. :</span> {data.tvaIntra}
+              </div>
+
+            </div>
+
+
+            <div className="flex justify-between">
+              <div className="font-medium text-[10px]">Page N° 1/1</div>
+
+            </div>
+
           </div>
 
+
+
+
           {/* Lot Info Table with Espace Client */}
-          <div className="flex gap-2 mb-4">
+          <div className="flex gap-2 mb-4 ">
             {/* Left - Lot table */}
-            <table className="text-[8px] border-collapse" style={{ border: "1px solid #f7941d", flex: "1" }}>
-              <thead>
-                <tr style={{ backgroundColor: "#f7941d", color: "white" }}>
-                  <th className="border border-gray-300 p-1 text-left">N° Lot</th>
-                  <th className="border border-gray-300 p-1 text-left">Ent.</th>
-                  <th className="border border-gray-300 p-1 text-left">Esc.</th>
-                  <th className="border border-gray-300 p-1 text-left">Et.</th>
-                  <th className="border border-gray-300 p-1 text-left">Porte</th>
-                  <th className="border border-gray-300 p-1 text-left">Type de lot</th>
-                </tr>
-              </thead>
+            <table className="border-collapse flex-1">
               <tbody>
-                <tr>
-                  <td className="border border-gray-300 p-1">{data.lotNumber}</td>
-                  <td className="border border-gray-300 p-1">{data.entree}</td>
-                  <td className="border border-gray-300 p-1">{data.escalier}</td>
-                  <td className="border border-gray-300 p-1">{data.etage}</td>
-                  <td className="border border-gray-300 p-1">{data.porte}</td>
-                  <td className="border border-gray-300 p-1">{data.typeLot}</td>
+
+                <tr className="bg-[#DDDDDD] text-black">
+                  <th className="border-t border-l border-r border-black p-0 text-center font-semimedium text-[10px]">N° Lot</th>
+                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px]">Ent.</th>
+                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px]">Esc.</th>
+                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px]">Et.</th>
+                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px]">Porte</th>
+                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px]">Type de lot</th>
+                </tr>
+
+
+                <tr >
+                  <td className="border-l border-r border-black p-1 font-medium text-[10px] text-right leading-[0.2em]">{data.lotNumber}</td>
+                  <td className="border-r  border-black p-1 font-medium text-[10px] text-center leading-[0.2em]">{data.entree}</td>
+                  <td className="border-r  border-black p-1 font-medium text-[10px] text-center leading-[0.2em]">{data.escalier}</td>
+                  <td className="border-r  border-black p-1 font-medium text-[10px] text-center leading-[0.2em]">{data.etage}</td>
+                  <td className="border-r  border-black p-1 font-medium text-[10px] text-center leading-[0.2em]">{data.porte}</td>
+                  <td className="border-r  border-black p-1 font-medium text-[10px] leading-[0.2em] ">{data.typeLot}</td>
                 </tr>
                 {data.lot2Number && (
-                  <tr>
-                    <td className="border border-gray-300 p-1">{data.lot2Number}</td>
-                    <td className="border border-gray-300 p-1">{data.lot2Entree}</td>
-                    <td className="border border-gray-300 p-1">{data.lot2Escalier}</td>
-                    <td className="border border-gray-300 p-1">{data.lot2Etage}</td>
-                    <td className="border border-gray-300 p-1">{data.lot2Porte}</td>
-                    <td className="border border-gray-300 p-1">{data.lot2Type}</td>
+                  <tr >
+                    <td className="border-l border-r border-b border-black p-1 font-medium text-[10px] text-right leading-[0.2em] pb-8">{data.lot2Number}</td>
+                    <td className=" border-r border-b border-black p-1 font-medium text-[10px] text-center leading-[0.2em] pb-8">{data.lot2Entree}</td>
+                    <td className=" border-r border-b border-black p-1 font-medium text-[10px] text-center leading-[0.2em] pb-8">{data.lot2Escalier}</td>
+                    <td className=" border-r border-b border-black p-1 font-medium text-[10px] text-center leading-[0.2em] pb-8">{data.lot2Etage}</td>
+                    <td className=" border-r border-b border-black p-1 font-medium text-[10px] text-center leading-[0.2em] pb-8">{data.lot2Porte}</td>
+                    <td className=" border-r border-b border-black p-1 font-medium text-[10px] leading-[0.2em] pb-8">{data.lot2Type}</td>
                   </tr>
                 )}
               </tbody>
             </table>
 
+            <div className="w-[250px]">
+
+            </div>
+
             {/* Right - Espace Client box */}
-            <div 
-              className="text-[8px] p-2"
-              style={{ 
-                border: "2px solid #00a651",
-                width: "100px",
-              }}
-            >
-              <div className="font-bold mb-1" style={{ color: "#00a651" }}>ESPACE CLIENT</div>
-              <div style={{ color: "#00a651", fontSize: "7px" }}>Pour vous identifier</div>
-              <div className="mt-1">
-                <div style={{ fontSize: "7px" }}>Votre identifiant</div>
-                <div className="font-bold" style={{ backgroundColor: "#ffffa0", padding: "1px 2px" }}>{data.clientId}</div>
+            <div
+              className=" w-[120px]  bg-[#F4F4F5] ">
+              <div className="font-bold  bg-gradient-to-b from-[#1AB2CB] via-[#1AB2CB] to-[#005993] text-white pt-0 pb-4 text-[11px] text-center align-top tracking-widest"><span className="align-top items-center m-0 " style={{ fontFamily: 'Poppins' }}>ESPACE CLIENT</span></div>
+              <div className="text-[10px] text-[#59C6D9] p-1 font-bold text-center">Pour vous identifier</div>
+
+              <div className="flex flex-col text-left p-1 gap-1">
+                <div className="flex flex-col gap-1">
+                  <div className="text-[8px] text-left  text-gray-400">Votre identifiant</div>
+                  <div className="font-bold border-1 border-gray-400 p-1 bg-[#ffffff] text-[8px]">{data.clientId}</div>
+                </div>
+                <div className="flex flex-col gap-1">
+                  <div className="text-[8px] text-left   text-gray-400">Votre mot de passe</div>
+                  <div className="font-bold border-1 border-gray-400 p-1 bg-[#ffffff] text-[8px] ">{data.clientPassword}</div>
+                </div>
               </div>
-              <div className="mt-1">
-                <div style={{ fontSize: "7px" }}>Votre mot de passe</div>
-                <div style={{ backgroundColor: "#f0f0f0", padding: "1px 2px", fontSize: "7px" }}>{data.clientPassword}</div>
-              </div>
+
             </div>
           </div>
 
-          {/* Main Content Grid - Quittance Left, Tables Right */}
-          <div className="flex gap-4">
-            {/* Left Column - Quittance and Avis text */}
-            <div style={{ width: "40%" }}>
-              {/* Quittance Section */}
-              <div className="mb-4">
-                <h2 
-                  className="font-bold text-[12px] p-1"
-                  style={{ 
-                    backgroundColor: "#f7941d",
-                    color: "white",
-                  }}
-                >
-                  QUITTANCE DE LOYER
-                </h2>
-                <div className="text-[10px] font-bold mt-1">ou Indemnité d'Occupation</div>
-                <div className="text-[8px] mt-2">
+
+          {/* Quittance Section */}
+          <div className="flex gap-4 text-[12px] text-black font-sans w-full mt-6">
+
+            {/* ================= LEFT BLOCK ================= */}
+            <div className="w-[310px] h-[300px]">
+
+              {/* BLACK HEADER */}
+              <div className="bg-black text-white text-center font-bold pb-3 pt-2 uppercase text-[12px] align-top">
+                QUITTANCE DE LOYER<br></br>
+                ou Indemnité d'Occupation
+              </div>
+
+              {/* CONTENT */}
+              <div className="p-[2px] leading-tight text-justify">
+                <p className="font-bold mb-2 text-[10px] align-top mt-2">
                   du {data.quittancePeriodStart} au {data.quittancePeriodEnd} {data.quittancePaymentType}
-                </div>
-                <div className="text-[7px] mt-2 text-justify" style={{ lineHeight: "1.4" }}>
-                  Dont quittance, sans préjudice du terme en cours, sous réserve de tous suppléments pouvant être dus en vertu des lois ou conventions applicables et sous réserve de tous les droits et actions du propriétaire, de toutes poursuites qui auraient pu être engagées et de toutes décisions de justice qui auraient pu être obtenues.
-                </div>
-                <div className="text-[7px] mt-1 text-justify" style={{ lineHeight: "1.4" }}>
-                  En cas de congé précédemment donné, cette quittance représenterait l'indemnité d'occupation et ne saurait être considérée comme un titre de location.
-                </div>
-                <div className="text-[7px] mt-1 text-justify" style={{ lineHeight: "1.4" }}>
-                  Cette quittance annule tous les reçus qui auraient pu être donnés pour acompte versé sur le présent terme, même si ces reçus portent une date postérieure à la date ci-contre. Le paiement de la présente quittance n'emporte pas présomption de paiement des termes antérieurs.
-                </div>
+                </p>
+
+                <p className="text-[9px] justify-stretch text-left font-medium leading-[1.5em]">
+                  Dont quittance, sans préjudice du terme en cours, sous réserve de
+                  tous suppléments pouvant être dus en vertu des lois ou
+                  conventions applicables et sous réserve de tous les droits et
+                  actions du propriétaire, de toutes poursuites qui auraient pu être
+                  engagées et de toutes décisions de justice qui auraient pu être
+                  obtenues.<br></br>
+                  En cas de congé précédemment donné, cette quittance
+                  représenterait l'indemnité d'occupation et ne saurait être
+                  considérée comme un titre de location.<br></br>
+                  Cette quittance annule tous les reçus qui auraient pu être donnés
+                  pour acompte versé sur le présent terme, même si ces reçus
+                  portent une date postérieure à la date ci-contre. Le paiement de la
+                  présente quittance n'emporte pas présomption de paiement des
+                  termes antérieurs.
+
+                </p>
+              </div>
+            </div>
+
+            {/* ================= RIGHT TABLE ================= */}
+            <table className="w-[470px] border border-black border-collapse text-[12px] align-top">
+              <tbody>
+
+                {/* HEADER */}
+                <tr className="bg-[#d9d9d9] font-bold text-center ">
+                  <td className="border-b border-black ">
+                    Quittance
+                  </td>
+                  <td className="border-b border-l border-r border-black w-[70px] font-bold align-middle">Débit</td>
+                  <td className="border-b  border-black w-[70px] font-bold align-middle">Crédit</td>
+                </tr>
+
+                {/* ROWS */}
+                <tr>
+                  <td className="px-2  leading-[1em] font-medium py-[3px] "></td>
+                  <td className="border-l border-r border-black  px-2 py-[3px]  text-right text-[10px] leading-[1em] font-medium "></td>
+                  <td className=""></td>
+                </tr>
+                <tr>
+                  <td className="px-2  text-[10px] leading-[1em] font-medium py-[3px] ">LOYER PRINCIPAL</td>
+                  <td className="border-l border-r border-black  px-2 py-[3px]  text-right text-[10px] leading-[1em] font-medium ">{data.quittanceLoyerPrincipal}</td>
+                  <td className=""></td>
+                </tr>
+
+                <tr>
+                  <td className="px-2 text-[10px] leading-[1em] align-top font-medium">
+                    PROVISION CHARGES
+                  </td>
+                  <td className="border-l border-r  border-black  px-2  text-right text-[10px] leading-[1em] align-top font-medium">{data.quittanceProvisionCharges}</td>
+                  <td className=""></td>
+                </tr>
+
+                <tr>
+                  <td className="px-2  text-[10px] leading-[1em] pb-16 align-top font-medium">
+                    ASSURANCE PRIVILEGE ABP
+                  </td>
+                  <td className=" border-l border-r border-black  px-2  text-right text-[10px] leading-[1em] pb-16 align-top font-medium">{data.quittanceAssurance}</td>
+                  <td className=""></td>
+                </tr>
+
+
+                {/* TOTAL */}
+                <tr className="font-semibold">
+                  <td className=" border-t border-black text-left px-3 text-[11px] ">
+                    <p className=" flex justify-between align-middle">TOTAL de la période (Euros.) <span className="text-right">{data.quittanceTotal}</span></p>
+                  </td>
+                  <td className="border-l border-r border-t border-black  text-right px-2 text-[11px]">
+                    {data.quittanceTotal}
+                  </td>
+                  <td className="border-t border-black"></td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+          <div className="border-dashed border-gray-400 border-[0.1px] mt-2 mb-2"></div>
+
+          {/* Avis d'Échéance Section  */}
+          <div className="flex gap-4 text-[12px] text-black font-sans w-full mt-1">
+
+            {/* ================= LEFT BLOCK ================= */}
+            <div className="w-[310px]">
+
+              {/* BLACK HEADER */}
+              <div className="bg-black text-white text-center font-semibold pb-3 uppercase text-[12px] align-top">
+                <span className="mt-[-10px]">AVIS D'ECHEANCE</span>
               </div>
 
-              {/* Avis d'Échéance Section */}
-              <div>
-                <h2 
-                  className="font-bold text-[12px] p-1"
-                  style={{ 
-                    backgroundColor: "#f7941d",
-                    color: "white",
-                  }}
-                >
-                  AVIS D'ECHEANCE
-                </h2>
-                <div className="text-[8px] mt-2">
+              {/* CONTENT */}
+              <div className="p-[2px] leading-tight text-justify">
+                <p className="font-bold mb-2 text-[10px]  mt-4">
                   du {data.avisPeriodStart} au {data.avisPeriodEnd} {data.quittancePaymentType}
-                </div>
-                <div className="text-[7px] mt-2 text-justify" style={{ lineHeight: "1.4" }}>
-                  Nous avons l'honneur de vous informer que vous êtes redevable du montant de la somme détaillée ci-contre que nous vous invitons à régler dès réception du présent avis.
-                </div>
-                <div className="text-[7px] mt-2 font-bold">
-                  Cet avis est une demande de paiement.
-                </div>
-                <div className="text-[7px] mt-1">
+                </p>
+
+                <p className="text-[9px] justify-stretch text-left font-medium leading-[1.5em]">
+                  Nous avons l'honneur de vous informer que vous êtes redevable
+                  du montant de la somme détaillée ci-contre que nous vous invitons
+                  à régler dès réception du présent avis.<br></br><br></br>
+                  Cet avis est une demande de paiement.<br></br><br></br>
                   Il ne peut en aucun cas servir de reçu ou de quittance de loyer.
+
+                </p>
+              </div>
+            </div>
+
+            {/* ================= RIGHT TABLE ================= */}
+            <table className="w-[470px] border border-black border-collapse text-[12px] align-top">
+              <tbody>
+
+                {/* HEADER */}
+                <tr className="bg-[#C0C0C0] font-bold text-center align-bottom" style={{ fontFamily: "'poppins',sans-serif " }}>
+                  <td className="border-b border-black py-2 text-[12px] font-bold align-bottom">
+                    Relevé de compte
+                  </td>
+                  <td className="border-b border-l border-r border-black w-[70px] align-middle py-2">Débit</td>
+                  <td className="border-b  border-black w-[70px] align-middle py-2">Crédit</td>
+                </tr>
+
+                {/* ROWS */}
+                <tr>
+                  <td className="px-2  leading-[1.5em] font-medium py-[3px] "></td>
+                  <td className="border-l border-r border-black  px-2 py-[3px]  text-right text-[10px] leading-[1.5em] font-medium "></td>
+                  <td className=""></td>
+                </tr>
+                <tr>
+                  <td className="py-1 px-2 text-[10px] leading-[1.5em] font-medium ">{data.soldeAnterieurDate} SOLDE ANTERIEUR</td>
+                  <td className="border-l border-r border-black  px-2 py-[3px]  text-right text-[10px] leading-[1.5em] font-medium ">{data.soldeAnterieurAmount}</td>
+                  <td className=""></td>
+                </tr>
+
+                <tr>
+                  <td className="px-2 text-[10px] leading-[1.5em] align-top font-medium">
+                    {data.paiementDate} {data.paiementLabel}
+                  </td>
+                  <td className="border-l border-r  border-black  "></td>
+                  <td className="px-2  text-right text-[10px] leading-[1.5em] align-top font-medium ">{data.paiementAmount}</td>
+                </tr>
+
+                <tr>
+                  <td className="px-10  text-[10px] leading-[1.5em] align-top font-medium ">
+                    LOYER PRINCIPAL
+                  </td>
+                  <td className=" border-l border-r border-black  px-2  text-right text-[10px] leading-[1.5em]  align-top font-medium">{data.avisLoyerPrincipal}</td>
+                  <td className=""></td>
+                </tr>
+                <tr>
+                  <td className="px-10  text-[10px] leading-[1.5em]  align-top font-medium">
+                    TAXES ENLEVEMENT O.M. {data.avisTaxesOMYear}
+                  </td>
+                  <td className=" border-l border-r border-black px-2  text-right text-[10px] leading-[1.5em]  align-top font-medium ">{data.avisTaxesOM}</td>
+                  <td className=""></td>
+                </tr>
+                <tr>
+                  <td className="px-10  text-[10px] leading-[1.5em] align-top font-medium">
+                    ASSURANCE PRIVILEGE ABP
+                  </td>
+                  <td className=" border-l border-r border-black  px-2  text-right text-[10px] leading-[1.5em]  align-top font-medium">{data.avisAssurance}</td>
+                  <td className=""></td>
+                </tr>
+                <tr>
+                  <td className="px-10  text-[10px] leading-[1.5em] align-top font-medium pb-10 ">
+                    PROVISION CHARGES
+                  </td>
+                  <td className=" border-l border-r border-black  px-2  text-right text-[10px] leading-[1.5em]  align-top font-medium pb-10 ">{data.avisProvisionCharges}</td>
+                  <td className=""></td>
+                </tr>
+
+                <tr>
+                  <td className="px-2 py-2 text-[10px] leading-[1.5em] align-top font-medium">
+                    TOTAL de la période du {data.avisPeriodStart} au {data.avisPeriodEnd} {data.avisTotal}
+                  </td>
+                  <td className=" border-l border-r border-black  px-2 py-2 text-right text-[10px] leading-[1.5em]  align-top font-medium"> </td>
+                  <td className=" px-2 py-2 text-right text-[10px] leading-[1.5em]  align-top font-medium"></td>
+                </tr>
+
+
+
+                {/* TOTAL */}
+                <tr className="font-semibold bg-[#C0C0C0]">
+                  <td className="border-t border-black text-left px-2 text-[10px] leading-[1.2em] align-top font-bold pb-2">
+
+                    <p className=" flex justify-between align-middle">Montant net à payer (Euros.) <span className="text-right">{data.montantNetAPayer}</span></p>
+
+                  </td>
+                  <td className="border-l border-r border-t border-black  text-right px-2 text-[10px] font-bold align-top pb-2">
+                    {data.totalCredits}
+                  </td>
+                  <td className="border-t border-black text-right px-2 text-[10px] font-bold align-top pb-2">{data.totalDebits}</td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
+
+
+          {/* Footer with QR Code and Bank Info */}
+          <div className="flex mt-12 p-0">
+            <div className="flex justify-between items-start bg-[#C0C0C0] p-0 rounded-2xl w-[500px] h-[110px]">
+              {/* Prélèvement Info */}
+              <div className="flex-1 p-0">
+                <div className="font-semibold text-center border-b-2 border-black text-[9px] px-4 pt-2 py-2">
+                  Prélèvement effectué le sur le compte indiqué ci-dessous
+                </div>
+                <div className="mt-2 ml-3 text-[10px]  pb-1">
+                  Montant prélevé :<span className="ml-4">{data.montantPreleve}</span> Euros.
+                </div>
+                <div className="flex gap-10 text-[10px] ml-3 justify-start">
+                  <div className="text-[10px]">ICS : {data.ics}</div>
+                  <div className="text-[10px]">RUM : {data.rum}</div>
+                  <div className="text-[10px]">BIC : {data.bic}</div>
+
+                </div>
+                <div className="text-[10px] ml-3">IBAN : {data.iban}</div>
+                <div className="mt-1 text-[10px] ml-3 ">
+                  Titulaire du compte : {data.titulaireCompte}
                 </div>
               </div>
             </div>
 
-            {/* Right Column - Tables */}
-            <div style={{ width: "60%" }}>
-              {/* Quittance Table */}
-              <table className="w-full text-[8px] border-collapse mb-3" style={{ border: "1px solid #ccc" }}>
-                <thead>
-                  <tr style={{ backgroundColor: "#f0f0f0" }}>
-                    <th className="border border-gray-300 p-1 text-left font-bold" style={{ color: "#00529b" }}>Quittance</th>
-                    <th className="border border-gray-300 p-1 text-right font-bold" style={{ color: "#00529b" }}>Débit</th>
-                    <th className="border border-gray-300 p-1 text-right font-bold" style={{ color: "#00529b" }}>Crédit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 p-1">LOYER PRINCIPAL</td>
-                    <td className="border border-gray-300 p-1 text-right"></td>
-                    <td className="border border-gray-300 p-1 text-right">{data.quittanceLoyerPrincipal}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-1">PROVISION CHARGES</td>
-                    <td className="border border-gray-300 p-1 text-right"></td>
-                    <td className="border border-gray-300 p-1 text-right">{data.quittanceProvisionCharges}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-1">ASSURANCE PRIVILEGE ABP</td>
-                    <td className="border border-gray-300 p-1 text-right"></td>
-                    <td className="border border-gray-300 p-1 text-right">{data.quittanceAssurance}</td>
-                  </tr>
-                </tbody>
-                <tfoot>
-                  <tr style={{ backgroundColor: "#f0f0f0" }}>
-                    <td className="border border-gray-300 p-1 font-bold">TOTAL de la période (Euros.)</td>
-                    <td className="border border-gray-300 p-1 text-right font-bold">{data.quittanceTotal}</td>
-                    <td className="border border-gray-300 p-1 text-right font-bold">{data.quittanceTotal}</td>
-                  </tr>
-                </tfoot>
-              </table>
-
-              {/* Relevé de compte Table */}
-              <table className="w-full text-[8px] border-collapse mb-3" style={{ border: "1px solid #ccc" }}>
-                <thead>
-                  <tr style={{ backgroundColor: "#f0f0f0" }}>
-                    <th className="border border-gray-300 p-1 text-left font-bold" style={{ color: "#00529b" }}>Relevé de compte</th>
-                    <th className="border border-gray-300 p-1 text-right font-bold" style={{ color: "#00529b" }}>Débit</th>
-                    <th className="border border-gray-300 p-1 text-right font-bold" style={{ color: "#00529b" }}>Crédit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="border border-gray-300 p-1">{data.soldeAnterieurDate} SOLDE ANTERIEUR</td>
-                    <td className="border border-gray-300 p-1 text-right">{data.soldeAnterieurAmount}</td>
-                    <td className="border border-gray-300 p-1 text-right"></td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-1">{data.paiementDate} {data.paiementLabel}</td>
-                    <td className="border border-gray-300 p-1 text-right"></td>
-                    <td className="border border-gray-300 p-1 text-right">{data.paiementAmount}</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-1 pl-6">LOYER PRINCIPAL</td>
-                    <td className="border border-gray-300 p-1 text-right">{data.avisLoyerPrincipal}</td>
-                    <td className="border border-gray-300 p-1 text-right"></td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-1 pl-6">TAXES ENLEVEMENT O.M. {data.avisTaxesOMYear}</td>
-                    <td className="border border-gray-300 p-1 text-right">{data.avisTaxesOM}</td>
-                    <td className="border border-gray-300 p-1 text-right"></td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-1 pl-6">ASSURANCE PRIVILEGE ABP</td>
-                    <td className="border border-gray-300 p-1 text-right">{data.avisAssurance}</td>
-                    <td className="border border-gray-300 p-1 text-right"></td>
-                  </tr>
-                  <tr>
-                    <td className="border border-gray-300 p-1 pl-6">PROVISION CHARGES</td>
-                    <td className="border border-gray-300 p-1 text-right">{data.avisProvisionCharges}</td>
-                    <td className="border border-gray-300 p-1 text-right"></td>
-                  </tr>
-                </tbody>
-              </table>
-
-              {/* Révision de loyer */}
-              <div className="text-[8px] mb-2 p-1" style={{ border: "1px solid #ccc" }}>
-                <div className="font-bold" style={{ color: "#00529b" }}>Révision de loyer</div>
-                <div>Date de révision : {data.revisionDate}</div>
-                <div>Rubrique {data.revisionRubrique} Montants précédents {data.revisionMontantPrecedent}</div>
-              </div>
-
-              {/* Total Avis */}
-              <table className="w-full text-[8px] border-collapse" style={{ border: "1px solid #ccc" }}>
-                <tbody>
-                  <tr style={{ backgroundColor: "#f0f0f0" }}>
-                    <td className="border border-gray-300 p-1 font-bold">TOTAL de la période du {data.avisPeriodStart} au {data.avisPeriodEnd}</td>
-                    <td className="border border-gray-300 p-1 text-right font-bold">{data.avisTotal}</td>
-                    <td className="border border-gray-300 p-1 text-right font-bold"></td>
-                  </tr>
-                  <tr style={{ backgroundColor: "#f0f0f0" }}>
-                    <td className="border border-gray-300 p-1 font-bold" style={{ color: "#00529b" }}>Montant net à payer (Euros.)</td>
-                    <td className="border border-gray-300 p-1 text-right font-bold" style={{ color: "#00529b" }}>{data.montantNetAPayer}</td>
-                    <td className="border border-gray-300 p-1 text-right font-bold">{data.totalCredits}</td>
-                    <td className="border border-gray-300 p-1 text-right font-bold">{data.totalDebits}</td>
-                  </tr>
-                </tbody>
-              </table>
+            {/* Footer Banner */}
+            <div className="flex flex-col items-center ml-3 font-semibold text-[10px]">
+              <h1> Prélevé le : {data.prelevementDate} </h1>
             </div>
           </div>
-
-          {/* Footer with Prélèvement Info */}
-          <div 
-            className="mt-4"
-            style={{ 
-              backgroundColor: "#1a365d",
-              padding: "8px 12px",
-            }}
-          >
-            <div className="flex justify-between items-center text-white text-[9px]">
-              <div className="font-bold">Prélèvement effectué sur le compte indiqué ci-dessous</div>
-              <div style={{ color: "#f7941d", fontWeight: "bold" }}>Prélevé le : {data.prelevementDate}</div>
-            </div>
-          </div>
-
-          {/* Prélèvement Details */}
-          <div 
-            className="p-3 text-[8px]"
-            style={{ 
-              backgroundColor: "#e8f4f8",
-              borderLeft: "1px solid #ccc",
-              borderRight: "1px solid #ccc",
-              borderBottom: "1px solid #ccc",
-            }}
-          >
-            <div className="font-bold mb-2">Montant prélevé : {data.montantPreleve} Euros.</div>
-            <div className="flex gap-8 text-[7px]">
-              <div><strong>ICS :</strong> {data.ics}</div>
-              <div><strong>RUM :</strong> {data.rum}</div>
-              <div><strong>BIC :</strong> {data.bic}</div>
-            </div>
-            <div className="mt-1 text-[7px]">
-              <strong>IBAN :</strong> {data.iban}
-            </div>
-            <div className="mt-1 text-[7px]">
-              <strong>Titulaire du compte :</strong> {data.titulaireCompte}
-            </div>
-          </div>
-
-          {/* QR Code section if exists */}
-          {(data.qrCodeImage || data.qrCodeUrl) && (
-            <div className="flex justify-end mt-2">
-              {data.qrCodeImage ? (
-                <img src={data.qrCodeImage} alt="QR Code" className="w-16 h-16" />
-              ) : data.qrCodeUrl ? (
-                <QRCodeSVG value={data.qrCodeUrl} size={64} />
-              ) : null}
-            </div>
-          )}
         </div>
       </div>
     );

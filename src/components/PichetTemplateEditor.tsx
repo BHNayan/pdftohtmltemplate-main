@@ -181,6 +181,19 @@ const PichetTemplateEditor = ({ data, onChange }: PichetTemplateEditorProps) => 
             </AccordionContent>
           </AccordionItem>
 
+           {/* Property Reference */}
+          <AccordionItem value="property" className="border rounded-lg px-3">
+            <AccordionTrigger className="text-sm font-semibold py-3">
+              𝄜 Property Table
+            </AccordionTrigger>
+            <AccordionContent className="space-y-3 pb-4">
+              {renderField("N° Lot", "lotNumber")}
+              {renderField("Type de lot", "typeDeLot")}
+              {renderField("Propriétaire", "proprietaireNumber")}
+              {renderField("Références à rappeler", "référencesARappeler")}
+            </AccordionContent>
+          </AccordionItem>
+
           {/* Quittance Section */}
           <AccordionItem value="quittance" className="border rounded-lg px-3">
             <AccordionTrigger className="text-sm font-semibold py-3">
@@ -249,7 +262,7 @@ const PichetTemplateEditor = ({ data, onChange }: PichetTemplateEditorProps) => 
           {/* QR Code Section */}
           <AccordionItem value="qrcode" className="border rounded-lg px-3">
             <AccordionTrigger className="text-sm font-semibold py-3">
-              📱 QR Code
+              📱 Footer Banner
             </AccordionTrigger>
             <AccordionContent className="space-y-4 pb-4">
               <div className="space-y-3">

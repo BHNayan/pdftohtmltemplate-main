@@ -108,6 +108,12 @@ export interface PichetAvisEcheanceData {
   propertyDescription: string;
   propertyAddress1: string;
   propertyAddress2: string;
+
+    // Property Number info
+  lotNumber: string;
+  typeDeLot: string;
+  proprietaireNumber: string;
+  référencesARappeler: string;
   
   // Staff info
   assistantName: string;
@@ -166,7 +172,8 @@ export interface PichetAvisEcheanceData {
 export interface FonciaAvisEcheanceData {
   // Header
   logoUrl: string;
-  agencyName: string;
+  agencyNamemain: string;
+  agencyNamesub: string;
   agencyAddress1: string;
   agencyAddress2: string;
   agencyPhone: string;
@@ -185,9 +192,11 @@ export interface FonciaAvisEcheanceData {
   
   // Tenant info
   tenantName: string;
+  tenantName2: string;
+  tenantName3: string;
   tenantAddress1: string;
   tenantAddress2: string;
-  tenantCity: string;
+  
   
   // Staff info
   gestionnaireName: string;
@@ -812,6 +821,11 @@ export const defaultPichetAvisEcheanceData: PichetAvisEcheanceData = {
   propertyDescription: "Appart. 2 Pieces B3 302",
   propertyAddress1: "2 AVENUE DE LA RESISTANCE",
   propertyAddress2: "RES SQUARE OREA",
+    // Lot info
+  lotNumber: "131",
+  typeDeLot: "Appart. 2 Pièces B3 302",
+  proprietaireNumber: "16663",
+  référencesARappeler: "G 4017.00048",
   
   // Staff info
   assistantName: "MME Marie ROCHARD",
@@ -869,7 +883,8 @@ export const defaultPichetAvisEcheanceData: PichetAvisEcheanceData = {
 export const defaultFonciaAvisEcheanceData: FonciaAvisEcheanceData = {
   // Header
   logoUrl: "",
-  agencyName: "AZUR",
+  agencyNamemain: "FONCIA",
+  agencyNamesub: "AZUR",
   agencyAddress1: "11 BOULEVARD DE LA FERRAGE",
   agencyAddress2: "06400 CANNES",
   agencyPhone: "04.92.99.68.66",
@@ -888,9 +903,11 @@ export const defaultFonciaAvisEcheanceData: FonciaAvisEcheanceData = {
   
   // Tenant info
   tenantName: "M. ARNAOUT SHADY",
+  tenantName2: "MME ARNAOUT STEPHANIE",
+  tenantName3: "LES PETITES ALPES",
   tenantAddress1: "102 BOULEVARD RAYMOND POUNCARE",
   tenantAddress2: "06160 JUAN LES PINS",
-  tenantCity: "",
+
   
   // Staff info
   gestionnaireName: "LE FEE MARINE",
@@ -918,7 +935,7 @@ export const defaultFonciaAvisEcheanceData: FonciaAvisEcheanceData = {
   
   // Client space info
   clientId: "A58MAR24786SF",
-  clientPassword: "Nice police de Préfecture N°1074",
+  clientPassword:"",
   
   // Quittance section
   quittancePeriodStart: "01/11/2022",

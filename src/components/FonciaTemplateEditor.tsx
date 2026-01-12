@@ -104,7 +104,8 @@ const FonciaTemplateEditor = ({ data, onChange }: FonciaTemplateEditorProps) => 
         <AccordionItem value="agency">
           <AccordionTrigger className="text-sm font-medium">Agency</AccordionTrigger>
           <AccordionContent className="space-y-3">
-            {renderField("Agency Name", "agencyName")}
+            {renderField("Agency Name Main", "agencyNamemain")}
+            {renderField("Agency Name Sub", "agencyNamesub")}
             {renderField("Address Line 1", "agencyAddress1")}
             {renderField("Address Line 2", "agencyAddress2")}
             {renderField("Phone", "agencyPhone")}
@@ -138,9 +139,11 @@ const FonciaTemplateEditor = ({ data, onChange }: FonciaTemplateEditorProps) => 
           <AccordionTrigger className="text-sm font-medium">Tenant</AccordionTrigger>
           <AccordionContent className="space-y-3">
             {renderField("Tenant Name", "tenantName")}
+            {renderField("Tenant Name 2", "tenantName2")}
+            {renderField("Tenant Name 3", "tenantName3")}
             {renderField("Address Line 1", "tenantAddress1")}
             {renderField("Address Line 2", "tenantAddress2")}
-            {renderField("City", "tenantCity")}
+            
           </AccordionContent>
         </AccordionItem>
 
