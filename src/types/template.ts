@@ -934,7 +934,7 @@ export const defaultFonciaAvisEcheanceData: FonciaAvisEcheanceData = {
   lot2Type: "PARKING INTERIEUR",
   
   // Client space info
-  clientId: "A58MAR24786SF",
+  clientId: "",
   clientPassword:"",
   
   // Quittance section

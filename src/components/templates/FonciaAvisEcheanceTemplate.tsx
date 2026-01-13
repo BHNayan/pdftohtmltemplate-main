@@ -15,8 +15,6 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
         ref={ref}
         className="bg-white shadow-lg mx-auto relative"
         style={{
-
-          padding: "0",
           fontFamily: "Poppins, sans-serif",
           fontSize: "10px",
           color: "#000",
@@ -52,18 +50,18 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
 
               {/* Right - Agency Info */}
               <div className="text-right mr-[40px] pb-2 ">
-                <div className="font-bold text-[40px] text-right font-['Playfair_Display',serif] leading-[1.3em]" >{data.agencyNamemain}</div>
+                <div className="font-bold text-[40px] text-right font-['Playfair_Display',serif] leading-[1.8em]" >{data.agencyNamemain}</div>
                 <div className="font-bold text-[22px] text-right font-['Playfair_Display',serif]" >{data.agencyNamesub}</div>
                 <div className="text-gray-500 text-[11px] font-['Inter',sans-serif] font-light">{data.agencyAddress1}</div>
                 <div className="font-['Inter',sans-serif] font-light text-gray-500  text-[11px]">{data.agencyAddress2}</div>
                 <div className="font-bold text-black text-[11px]">Tél : {data.agencyPhone}</div>
-                <div className="font-thin text-gray-500 text-[10px]">Fax : {data.agencyFax}</div>
-                <div className="font-thin text-gray-500 text-[10px]">{data.agencyEmail}</div>
+                <div className="font-thin text-gray-600 text-[10px]">Fax : {data.agencyFax}</div>
+                <div className="font-thin text-black text-[10px]">{data.agencyEmail}</div>
               </div>
               {/* Blue vertical text on the right edge */}
-              <div className="p-2 bg-[#EA6506] w-[30px] h-[160px] absolute right-4 top-5 ">
+              <div className="p-2 bg-[#EA6506] w-[30px] h-[170px] absolute right-4 top-13 ">
                 <div
-                  className="-rotate-90 text-white text-[16px] font-bold font-['Poppins',sans-serif] whitespace-nowrap mt-[125px] mr-4" >
+                  className="-rotate-90 text-white text-[16px] font-bold font-['Poppins',sans-serif] whitespace-nowrap mt-[130px] mr-3" >
                   www.foncia.com
                 </div>
               </div>
@@ -73,9 +71,9 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
           {/* Property Address and Tenant Block */}
           <div className="flex justify-between mb-4 mt-8">
             {/* Left - Property Address */}
-            <div className="text-[9px]">
+            <div className="text-[12px]">
               <div
-                className="font-bold underline pb-[3px]"
+                className="font-meidum underline pb-[3px] text-[10px]"
 
               >
                 Adresse de l'immeuble donné à bail
@@ -101,13 +99,13 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
 
           <div className=" flex justify-between gap-2">
 
-            <div className=" flex flex-col justify-between border border-black p-0 w-[376px] mb-4 pb-2">
+            <div className=" flex flex-col justify-between border border-black p-0 w-[352px] mb-4 pb-2">
               <div className="font-bold mb-1 text-center bg-[#DDDDDD] text-black pb-2 align-top"><span className="mt-[-10px]">Les interlocuteurs à votre service</span></div>
               <div className=" text-[11px] flex justify-between">
-                <span className="font-medium ml-3 ">Gestionnaire :</span> <span className="ml-[-115px] text-left font-medium"> {data.gestionnaireName}</span> <span className="mr-[2px] text-right font-medium">{data.gestionnairePhone}</span>
+                <span className="font-medium ml-3 ">Gestionnaire :</span> <span className="mr-[90px] text-left font-medium"> {data.gestionnaireName}</span> <span className=" text-right font-medium mr-1">{data.gestionnairePhone}</span>
               </div>
               <div className=" text-[11px] flex justify-between">
-                <span className="font-medium ml-3 ">Comptable :</span> <span className="ml-[-100px] text-left font-medium">{data.comptableName}</span> <span className="mr-[2px] text-right font-medium">{data.comptablePhone}</span>
+                <span className="font-medium ml-3 ">Comptable :</span> <span className="mr-[70px] text-left font-medium">{data.comptableName}</span> <span className=" text-right font-medium mr-1">{data.comptablePhone}</span>
               </div>
             </div>
 
@@ -141,12 +139,12 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
               <tbody>
 
                 <tr className="bg-[#DDDDDD] text-black">
-                  <th className="border-t border-l border-r border-black p-0 text-center font-semimedium text-[10px]">N° Lot</th>
-                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px]">Ent.</th>
-                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px]">Esc.</th>
-                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px]">Et.</th>
-                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px]">Porte</th>
-                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px]">Type de lot</th>
+                  <th className="border-t border-l border-r border-black p-0 text-center font-semimedium text-[10px] align-top">N° Lot</th>
+                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px] align-top">Ent.</th>
+                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px] align-top">Esc.</th>
+                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px] align-top">Et.</th>
+                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px] align-top">Porte</th>
+                  <th className="border-t  border-r border-black p-0 text-center font-semimedium text-[10px] align-top">Type de lot</th>
                 </tr>
 
 
@@ -184,11 +182,11 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
               <div className="flex flex-col text-left p-1 gap-1">
                 <div className="flex flex-col gap-1">
                   <div className="text-[8px] text-left  text-gray-400">Votre identifiant</div>
-                  <div className="font-bold border-1 border-gray-400 p-1 bg-[#ffffff] text-[8px]">{data.clientId}</div>
+                  <div className="font-bold border-1 border-gray-400 p-2 bg-[#ffffff] text-[8px] ">{data.clientId}</div>
                 </div>
                 <div className="flex flex-col gap-1">
                   <div className="text-[8px] text-left   text-gray-400">Votre mot de passe</div>
-                  <div className="font-bold border-1 border-gray-400 p-1 bg-[#ffffff] text-[8px] ">{data.clientPassword}</div>
+                  <div className="font-bold border-1 border-gray-400 p-2 bg-[#ffffff] text-[8px] ">{data.clientPassword}</div>
                 </div>
               </div>
 
@@ -277,7 +275,7 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
 
 
                 {/* TOTAL */}
-                <tr className="font-semibold">
+                <tr className="font-semibold bg-[#DDDDDD]">
                   <td className=" border-t border-black text-left px-3 text-[11px] ">
                     <p className=" flex justify-between align-middle">TOTAL de la période (Euros.) <span className="text-right">{data.quittanceTotal}</span></p>
                   </td>
@@ -327,7 +325,7 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
               <tbody>
 
                 {/* HEADER */}
-                <tr className="bg-[#C0C0C0] font-bold text-center align-bottom" style={{ fontFamily: "'poppins',sans-serif " }}>
+                <tr className="bg-[#DDDDDD] font-bold text-center align-bottom" style={{ fontFamily: "'poppins',sans-serif " }}>
                   <td className="border-b border-black py-2 text-[12px] font-bold align-bottom">
                     Relevé de compte
                   </td>
@@ -395,7 +393,7 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
 
 
                 {/* TOTAL */}
-                <tr className="font-semibold bg-[#C0C0C0]">
+                <tr className="font-semibold bg-[#DDDDDD]">
                   <td className="border-t border-black text-left px-2 text-[10px] leading-[1.2em] align-top font-bold pb-2">
 
                     <p className=" flex justify-between align-middle">Montant net à payer (Euros.) <span className="text-right">{data.montantNetAPayer}</span></p>
@@ -414,10 +412,10 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
 
 
           {/* Footer with QR Code and Bank Info */}
-          <div className="flex mt-12 p-0">
-            <div className="flex justify-between items-start bg-[#C0C0C0] p-0 rounded-2xl w-[500px] h-[110px]">
+          <div className="flex mt-12 pb-2">
+            <div className="flex justify-between items-start bg-[#C0C0C0]  rounded-2xl w-[500px] h-[120px]">
               {/* Prélèvement Info */}
-              <div className="flex-1 p-0">
+              <div className="flex-1 pb-4">
                 <div className="font-semibold text-center border-b-2 border-black text-[9px] px-4 pt-2 py-2">
                   Prélèvement effectué le sur le compte indiqué ci-dessous
                 </div>
@@ -431,7 +429,7 @@ const FonciaAvisEcheanceTemplate = forwardRef<HTMLDivElement, FonciaAvisEcheance
 
                 </div>
                 <div className="text-[10px] ml-3">IBAN : {data.iban}</div>
-                <div className="mt-1 text-[10px] ml-3 ">
+                <div className="mt-1 text-[10px] ml-3 pb-2">
                   Titulaire du compte : {data.titulaireCompte}
                 </div>
               </div>
