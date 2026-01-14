@@ -464,7 +464,7 @@ const PichetParisQuittanceTemplate = forwardRef<HTMLDivElement, PichetParisQuitt
               </div>
 
               <div className="flex gap-1   font-bold  justify-between p-1">
-                <div className="text-[9px]"><strong>{data.prelevement1Name}</strong> </div>
+                <div className="text-[9px] align-bottom"><strong>{data.prelevement1Name}</strong> </div>
 
                 <div className="flex gap-1 justify-start">
                   <div className="text-[9px]"><strong>PRLV - ICS :</strong> {data.prelevement1ICS}</div>
