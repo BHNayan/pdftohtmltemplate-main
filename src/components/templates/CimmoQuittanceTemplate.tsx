@@ -21,15 +21,15 @@ const CimmoQuittanceTemplate = forwardRef<HTMLDivElement, CimmoQuittanceTemplate
         }}
       >
         {/* Header with Logo */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-14">
           <div className="flex items-center">
             {data.logoUrl ? (
-              <img src={data.logoUrl} alt="Logo" className="w-full h-[50px] object-contain" />
+              <img src={data.logoUrl} alt="Logo" className="w-full h-full object-contain" />
             ) : (
               <>
                 <img
                   src={cimmologo}
-                  alt="CDC"
+                  alt="Cinmo"
                   style={{ width: "100%", height: "100%" }}
                 />
               </>
@@ -39,8 +39,8 @@ const CimmoQuittanceTemplate = forwardRef<HTMLDivElement, CimmoQuittanceTemplate
 
         {/* Appel Loyer Header */}
         <div
-          className="text-center p-1 mb-10 w-[250px] tracking-wider font-medium align-middle bg-[#008080] text-white text-[13px]">
-          <span className="mt-[-50px]">Appel Loyer</span>
+          className="text-center p-2 mb-10 w-[250px] h-fit tracking-wider font-medium  bg-[#008080] text-white text-[13px] align-top">
+          <div className="mt-[-13px] pb-1">Appel Loyer</div>
         </div>
 
         {/* Two Column - Tenant Info */}
@@ -70,7 +70,7 @@ const CimmoQuittanceTemplate = forwardRef<HTMLDivElement, CimmoQuittanceTemplate
         </div>
 
         {/* Salutation */}
-        <div className="text-[14px] font-medium mb-4">
+        <div className="text-[14px] font-medium mb-10">
           {data.salutation}
         </div>
 
@@ -79,21 +79,21 @@ const CimmoQuittanceTemplate = forwardRef<HTMLDivElement, CimmoQuittanceTemplate
           <div className="flex">
             {/* Left Header */}
             <div
-              className="p-1 font-medium text-[14px] text-center bg-[#008080] w-[180px] h-[30px] text-white">
-              Quittance de loyer
+              className="p-2 font-medium text-[14px] text-center bg-[#008080] w-[180px] h-fit text-white align-top ">
+              <div className="mt-[-13px] pb-1">Quittance de loyer</div>
             </div>
             {/* Right Description */}
             <div
-              className="p-1 text-[10px] flex-1 text-black font-medium -mt-1">
+              className="p-1 text-[10px] flex-1 text-black font-medium mt-[-12px]">
               {data.quittanceDescription}
             </div>
           </div>
 
           {/* Quittance Table Header */}
           <div
-            className="flex justify-between text-[12px] font-medium p-1 mt-1 bg-[#008080]">
-            <div className="text center text-white ml-60">Libellé</div>
-            <div className="text-right text-white mr-8">Montant</div>
+            className="flex justify-between text-[12px] font-medium p-1 mt-1 bg-[#008080] align-top">
+            <div className="text center text-white ml-60 mt-[-10px] p-[6px]">Libellé</div>
+            <div className="text-right text-white mr-8 mt-[-10px] p-[6px]">Montant</div>
           </div>
 
           {/* Quittance Items */}
@@ -114,23 +114,23 @@ const CimmoQuittanceTemplate = forwardRef<HTMLDivElement, CimmoQuittanceTemplate
 
           {/* Quittance Total */}
           <div
-            className="flex py-1 text-[12px] font-bold bg-[#D3D3D3]">
-            <div className="flex-1 px-2 text-right font-bold">TOTAL</div>
-            <div className="text-right px-2 font-bold" style={{ width: "100px" }}>{data.quittanceTotal1} €</div>
+            className="flex py-1 text-[12px] font-bold bg-[#D3D3D3] mt-2">
+            <div className="flex-1 px-2 text-right font-bold p-[6px] mt-[-10px]">TOTAL</div>
+            <div className="text-right font-bold py-[6px] px-[3px] mt-[-10px]" style={{ width: "100px" }}>{data.quittanceTotal1} €</div>
           </div>
         </div>
 
         {/* Appel Loyer Section */}
-        <div className="mb-4">
+        <div className="mb-2">
           <div className="flex">
             {/* Left Header */}
             <div
-              className="p-1 font-medium text-[14px] text-center bg-[#008080] w-[180px] h-[25px] text-white mb-2">
-              Appel Loyer
+              className="p-2 font-medium text-[14px] text-center bg-[#008080] w-[180px] h-fit text-white mb-2 align-top">
+              <div className="mt-[-13px] pb-1">Appel Loyer</div>
             </div>
             {/* Right Description */}
             <div
-              className="p-1 text-[10px] flex-1 text-black font-medium ">
+              className="p-1 text-[10px] flex-1 text-black font-medium mt-[-2px]">
               {data.appelLoyerDescription}
             </div>
           </div>
@@ -138,8 +138,8 @@ const CimmoQuittanceTemplate = forwardRef<HTMLDivElement, CimmoQuittanceTemplate
           {/* Appel Loyer Table Header */}
           <div
             className="flex justify-between text-[12px] font-medium p-1 mt-1 bg-[#008080]">
-            <div className="text center text-white ml-60">Libellé</div>
-            <div className="text-right text-white mr-8">Montant</div>
+            <div className="text center text-white ml-60 mt-[-10px] p-[6px]">Libellé</div>
+            <div className="text-right text-white mr-8 mt-[-10px] p-[6px]">Montant</div>
           </div>
 
           {/* Appel Loyer Items */}
@@ -150,7 +150,7 @@ const CimmoQuittanceTemplate = forwardRef<HTMLDivElement, CimmoQuittanceTemplate
               </div>
               <div className="text-right " style={{ width: "100px" }}><span className="font-medium">{data.appelLoyer} €</span></div>
             </div>
-            <div className="flex  text-black p-[2px]">
+            <div className="flex  text-black p-[2px] mb-2">
               <div className="flex-1 ">
                 <span className="font-medium ">Provisions pour charges {data.appelMonth}</span> {data.quittanceYear1}
               </div>
@@ -161,13 +161,13 @@ const CimmoQuittanceTemplate = forwardRef<HTMLDivElement, CimmoQuittanceTemplate
           {/* Appel Loyer Total */}
           <div
             className="flex py-1 text-[12px] font-bold bg-[#F5F5F5]">
-            <div className="flex-1 px-2 text-right font-bold">TOTAL DE L'ECHEANCE</div>
-            <div className="text-right px-2 font-bold" style={{ width: "100px" }}>{data.appelTotal} €</div>
+            <div className="flex-1 px-2 text-right font-bold p-[6px] mt-[-10px]">TOTAL DE L'ECHEANCE</div>
+            <div className="text-right  font-bold py-[6px] px-[3px] mt-[-10px]" style={{ width: "100px" }}>{data.appelTotal} €</div>
           </div>
         </div>
 
         {/* Modalité de règlement */}
-        <div className="text-[12px] font-medium mb-10">
+        <div className="text-[12px] font-medium mb-10 ">
           <div className="font-bold mb-1">MODALITE DE REGLEMENT :</div>
           <div>Prélèvement au {data.prelevementDate} : {data.prelevementAmount} €</div>
           <div>{data.prelevementIBAN} {data.prelevementName} : {data.prelevementAmount} €</div>
@@ -197,8 +197,8 @@ const CimmoQuittanceTemplate = forwardRef<HTMLDivElement, CimmoQuittanceTemplate
               }}
              >
               
-              <div className="flex items-start gap-2 mb-2 mt-[-3px] text-left">     
-                <span className="text-lg ml-[-20px] mt-[-20px]">✂</span>
+              <div className="flex items-start gap-2 mb-2 mt-[-7px] text-left">     
+                <span className="text-lg ml-[-20px] mt-[-28px]">✂</span>
                 <div>
                   <div className="font-bold leading-[1em]">
                     Papillon à nous retourner en cas de règlement par chèque.
