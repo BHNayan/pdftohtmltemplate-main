@@ -5,6 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Upload } from "lucide-react";
 
+
 interface CimmoTemplateEditorProps {
   data: CimmoQuittanceData;
   onChange: (data: CimmoQuittanceData) => void;
