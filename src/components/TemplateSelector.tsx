@@ -41,8 +41,8 @@ const TemplateSelector = ({ templates, selectedTemplate, onSelect }: TemplateSel
           <div className="w-12 h-12 rounded-lg bg-gray-50 flex items-center justify-center mb-2">
             <Plus className="w-6 h-6 text-gray-400" />
           </div>
-          <p className="text-sm font-medium text-gray-400">Ajouter un modèle</p>
-          <p className="text-xs text-gray-400 mt-1">Bientôt disponible</p>
+          <p className="text-sm font-medium text-gray-400">Add one</p>
+          <p className="text-xs text-gray-400 mt-1">Coming soon</p>
         </CardContent>
       </Card>
     </div>

@@ -13,6 +13,7 @@ import SeqensAvisEcheanceTemplate from "@/components/templates/SeqensAvisEcheanc
 import CimmoQuittanceTemplate from "@/components/templates/CimmoQuittanceTemplate";
 import NexityAvisEcheanceTemplate from "@/components/templates/NexityAvisEcheanceTemplate";
 import OrpiAvisEcheanceTemplate from "@/components/templates/OrpiAvisEcheanceTemplate";
+import SquareHabitatAvisEcheanceTemplate from "@/components/templates/SquareHabitatAvisEcheanceTemplate";
 import TemplateEditor from "@/components/TemplateEditor";
 import PichetTemplateEditor from "@/components/PichetTemplateEditor";
 import FonciaTemplateEditor from "@/components/FonciaTemplateEditor";
@@ -21,6 +22,7 @@ import SeqensTemplateEditor from "@/components/SeqensTemplateEditor";
 import CimmoTemplateEditor from "@/components/CimmoTemplateEditor";
 import NexityTemplateEditor from "@/components/NexityTemplateEditor";
 import OrpiTemplateEditor from "@/components/OrpiTemplateEditor";
+import SquareHabitatTemplateEditor from "@/components/SquareHabitatTemplateEditor";
 import TemplateSelector from "@/components/TemplateSelector";
 import { 
   AvisEcheanceData, 
@@ -31,6 +33,7 @@ import {
   CimmoQuittanceData,
   NexityAvisEcheanceData,
   OrpiAvisEcheanceData,
+  SquareHabitatAvisEcheanceData,
   defaultAvisEcheanceData, 
   defaultPichetAvisEcheanceData,
   defaultFonciaAvisEcheanceData,
@@ -39,10 +42,11 @@ import {
   defaultCimmoQuittanceData,
   defaultNexityAvisEcheanceData,
   defaultOrpiAvisEcheanceData,
+  defaultSquareHabitatAvisEcheanceData,
   Template 
 } from "@/types/template";
 
-type TemplateDataType = AvisEcheanceData | PichetAvisEcheanceData | FonciaAvisEcheanceData | PichetParisQuittanceData | SeqensAvisEcheanceData | CimmoQuittanceData | NexityAvisEcheanceData | OrpiAvisEcheanceData;
+type TemplateDataType = AvisEcheanceData | PichetAvisEcheanceData | FonciaAvisEcheanceData | PichetParisQuittanceData | SeqensAvisEcheanceData | CimmoQuittanceData | NexityAvisEcheanceData | OrpiAvisEcheanceData | SquareHabitatAvisEcheanceData;
 
 const templates: Template[] = [
   {
@@ -100,6 +104,13 @@ const templates: Template[] = [
     description: "Rent invoice Orpi",
     component: "OrpiAvisEcheanceTemplate",
     defaultData: defaultOrpiAvisEcheanceData,
+  },
+  {
+    id: "squarehabitat-avis-echeance",
+    name: "Square Habitat Due Notice",
+    description: "Rent invoice Square Habitat",
+    component: "SquareHabitatAvisEcheanceTemplate",
+    defaultData: defaultSquareHabitatAvisEcheanceData,
   },
 ];
 
@@ -160,6 +171,8 @@ const Index = () => {
         fileName = `nexity-avis-echeance-${(templateData as NexityAvisEcheanceData).documentDate?.replace(/\//g, "-") || "document"}.pdf`;
       } else if (selectedTemplate === "orpi-avis-echeance") {
         fileName = `orpi-avis-echeance-${(templateData as OrpiAvisEcheanceData).documentDate?.replace(/\//g, "-") || "document"}.pdf`;
+      } else if (selectedTemplate === "squarehabitat-avis-echeance") {
+        fileName = `squarehabitat-avis-echeance-${(templateData as SquareHabitatAvisEcheanceData).documentDate?.replace(/\//g, "-") || "document"}.pdf`;
       } else {
         fileName = `avis-echeance-${(templateData as AvisEcheanceData).invoiceNumber}-${(templateData as AvisEcheanceData).invoiceDate?.replace(/\//g, "-")}.pdf`;
       }
@@ -195,6 +208,9 @@ const Index = () => {
     }
     if (selectedTemplate === "orpi-avis-echeance") {
       return <OrpiAvisEcheanceTemplate ref={templateRef} data={templateData as OrpiAvisEcheanceData} />;
+    }
+    if (selectedTemplate === "squarehabitat-avis-echeance") {
+      return <SquareHabitatAvisEcheanceTemplate ref={templateRef} data={templateData as SquareHabitatAvisEcheanceData} />;
     }
     return <AvisEcheanceTemplate ref={templateRef} data={templateData as AvisEcheanceData} />;
   };
@@ -252,6 +268,14 @@ const Index = () => {
       return (
         <OrpiTemplateEditor 
           data={templateData as OrpiAvisEcheanceData} 
+          onChange={(data) => setTemplateData(data)} 
+        />
+      );
+    }
+    if (selectedTemplate === "squarehabitat-avis-echeance") {
+      return (
+        <SquareHabitatTemplateEditor 
+          data={templateData as SquareHabitatAvisEcheanceData} 
           onChange={(data) => setTemplateData(data)} 
         />
       );

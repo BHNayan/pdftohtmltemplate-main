@@ -706,12 +706,100 @@ export interface OrpiAvisEcheanceData {
   qrCodeImage: string;
 }
 
+// SquareHabitat Avis d'Échéance template data
+export interface SquareHabitatAvisEcheanceData {
+  // Header
+  logoUrl: string;
+  companyName: string;
+  companyLegal: string;
+  cardePro: string;
+  orias: string;
+  Adhérent: string;
+  
+  // Agency info
+  agencyName: string;
+  agencyCode: string;
+  agencyAddress: string;
+  agencyCity: string;
+  agencyPhone: string;
+  agencyFax: string;
+  
+  // Gestionnaire
+  gestionnaireName: string;
+  gestionnaireRef: string;
+  gestionnairePhone: string;
+  gestionnaireEmail: string;
+  
+  // Document info
+  documentLocation: string;
+  documentDate: string;
+  
+  // Property info
+  propertyName: string;
+  propertyAddress: string;
+  propertyCity: string;
+  propertyType: string;
+  
+  // Tenant info
+  tenantName: string;
+  tenantAddress1: string;
+  tenantAddress2: string;
+  tenantCity: string;
+  
+  // Lot info
+  lotType: string;
+  lotNumber: string;
+  proprietaireNumber: string;
+  referenceARappeler: string;
+  
+  // Quittance section
+  quittancePeriodStart: string;
+  quittancePeriodEnd: string;
+  quittanceType: string;
+  quittanceLoyer: string;
+  quittanceCharges: string;
+  quittanceTotalPeriode: string;
+  
+  // Avis d'échéance section
+  releve: Array<{
+    date: string;
+    description: string;
+    debit: string;
+    credit: string;
+  }>;
+  avisPeriodStart: string;
+  avisPeriodEnd: string;
+  avisLoyer: string;
+  avisProvisionCharges: string;
+  avisTotalPeriode: string;
+  montantNetAPayer: string;
+  dateExigible: string;
+  
+  // Prélèvement section
+  prelevementDate: string;
+  prelevementMontant: string;
+  prelevementICS: string;
+  prelevementRUM: string;
+  prelevementIBAN: string;
+  prelevementBIC: string;
+  
+  // Client info
+  clientIdentifiant: string;
+  
+  // Legal disclaimer
+  disclaimerText: string;
+  
+  // QR Code
+  footerwebsitename: string;
+  footername: string;
+}
+
 export interface Template {
   id: string;
   name: string;
   description: string;
   component: string;
-  defaultData: AvisEcheanceData | PichetAvisEcheanceData | FonciaAvisEcheanceData | PichetParisQuittanceData | SeqensAvisEcheanceData | CimmoQuittanceData | NexityAvisEcheanceData | OrpiAvisEcheanceData;
+  defaultData: AvisEcheanceData | PichetAvisEcheanceData | FonciaAvisEcheanceData | PichetParisQuittanceData | SeqensAvisEcheanceData | CimmoQuittanceData | NexityAvisEcheanceData | OrpiAvisEcheanceData | SquareHabitatAvisEcheanceData;
 }
 
 export const defaultAvisEcheanceData: AvisEcheanceData = {
@@ -1411,4 +1499,92 @@ export const defaultOrpiAvisEcheanceData: OrpiAvisEcheanceData = {
   // QR Code
   qrCodeUrl: "",
   qrCodeImage: "",
+};
+
+
+export const defaultSquareHabitatAvisEcheanceData: SquareHabitatAvisEcheanceData = {
+  // Header
+  logoUrl: "",
+  companyName: "SQUAREHABITAT",
+  companyLegal: "S.A.S. au capital de 525 000 € - Siège social 50 route des Vallée 74100 ANNEMASSE - RCS 498 753 078",
+  cardePro: "Carte professionnelle N° CPI 7401 2016 000 009 868 délivrée par la CCI de Haute Savoie - N°ORIAS 09050507",
+  orias: "09050507",
+  Adhérent: "Adhérent à la Caisse de garantie CAMCA -53, Rue de la Boétie 75008 Paris - N° 10 001 908",
+  
+  // Agency info
+  agencyName: "AGENCE D'ANNEMASSE",
+  agencyCode: "Code NAF 6831Z - TVA intracommunautaire FR 05498753078",
+  agencyAddress: "50 Route des Vallées",
+  agencyCity: "74100 ANNEMASSE",
+  agencyPhone: "04 50 95 66 66",
+  agencyFax: "04 50 95 81 29",
+  
+  // Gestionnaire
+  gestionnaireName: "MME Corinne VIMPERE",
+  gestionnaireRef: "E 31295",
+  gestionnairePhone: " ",
+  gestionnaireEmail: "c.vimpere@squarehabitat.fr",
+  
+  // Document info
+  documentLocation: "Annemasse",
+  documentDate: "23/08/2021",
+  
+  // Property info
+  propertyName: "RESIDENCE D'CLIC APPT A 406",
+  propertyAddress: "8 RUE JOSEPH CURSAT",
+  propertyCity: "74100 ANNEMASSE",
+  propertyType: "Appartement 2 Pieces",
+  
+  // Tenant info
+  tenantName: "M. DJELLAB SABRI",
+  tenantAddress1: "RESIDENCE D'CLIC APPT A 406",
+  tenantAddress2: "8 RUE JOSEPH CURSAT",
+  tenantCity: "74100 ANNEMASSE",
+  
+  // Lot info
+  lotType: "Appartement 2 Pieces",
+  lotNumber: "26",
+  proprietaireNumber: "6919",
+  referenceARappeler: "G.6744.00001",
+  
+  // Quittance section
+  quittancePeriodStart: "01/08/2021",
+  quittancePeriodEnd: "31/08/2021",
+  quittanceType: "Avance / MENS",
+  quittanceLoyer: "644,00",
+  quittanceCharges: "50,00",
+  quittanceTotalPeriode: "694,00",
+  
+  // Avis d'échéance section - Relevé de compte
+  releve: [
+    { date: "01/08/2021", description: "SOLDE ANTERIEUR", debit: "694,00", credit: "" },
+    { date: "10/08/2021", description: "Prlvt DJELLAB 291", debit: "", credit: "694,00" },
+    { date: "", description: "Loyer", debit: "644,00", credit: "" },
+    { date: "", description: "Provision sur charges (HP)", debit: "50,00", credit: "" },
+  ],
+  avisPeriodStart: "01/09/2021",
+  avisPeriodEnd: "30/09/2021",
+  avisLoyer: "644,00",
+  avisProvisionCharges: "50,00",
+  avisTotalPeriode: "694,00",
+  montantNetAPayer: "694,00",
+  dateExigible: "10/09/2021",
+  
+  // Prélèvement section
+  prelevementDate: "10/09/2021",
+  prelevementMontant: "694,00",
+  prelevementICS: "FR47ZZZ626075",
+  prelevementRUM: "T0560L000031295N000003727",
+  prelevementIBAN: "FR7616807xxxxxxxxxxxxx19116",
+  prelevementBIC: "CCBPFRPPGRE",
+  
+  // Client info
+  clientIdentifiant: "DJA3G295E",
+  
+  // Legal disclaimer
+  disclaimerText: "Dont quittance, sans préjudice du terme en cours, sous réserve de tous suppléments pouvant être dus en vertu des lois ou conventions applicables et sous réserve de tous les droits et actions du propriétaire, de toutes poursuites qui auraient pu être engagées et de toutes décisions de justice qui auraient pu être obtenues. En cas de congé précédemment donné, cette quittance représenterait l'indemnité d'occupation et ne saurait être considérée comme un titre de location. Cette quittance annule tous les reçus qui auraient pu être donnés pour acompte versé sur le présent terme, même si ces reçus portent une date postérieure à la date ci-contre. Le paiement de la présente quittance n'emporte pas présomption de paiement des termes antérieurs.",
+  
+  // QR Code
+  footerwebsitename: "www.squarehabitat.fr",
+  footername: "compte immo",
 };
